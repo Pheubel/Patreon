@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Patreon.Api.V2.Resources
 {
     public class Address
     {
         public IncludeFlag IncludeFlags { get; internal set; }
+
+        /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string? Addressee
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesAddressee) ?
@@ -14,6 +14,8 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesAddressee, nameof(Addressee));
             internal set => _addressee = value;
         }
+
+        /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string? LineOne
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesLineOne) ?
@@ -21,6 +23,8 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesLineOne, nameof(LineOne));
             internal set => _lineOne = value;
         }
+
+        /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string? LineTwo
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesLineTwo) ?
@@ -28,6 +32,8 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesLineTwo, nameof(LineTwo));
             internal set => _lineTwo = value;
         }
+
+        /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string? PostalCode
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesPostalCode) ?
@@ -35,6 +41,8 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesPostalCode, nameof(PostalCode));
             internal set => _postalCode = value;
         }
+
+        /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string City
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesCity) ?
@@ -42,6 +50,8 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesCity, nameof(City));
             internal set => _city = value;
         }
+
+        /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string? State
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesState) ?
@@ -49,6 +59,8 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesState, nameof(State));
             internal set => _state = value;
         }
+
+        /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string? Country
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesCountry) ?
@@ -56,6 +68,8 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesCountry, nameof(Country));
             internal set => _country = value;
         }
+
+        /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string? PhoneNumber
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesPhoneNumber) ?
@@ -63,6 +77,8 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesPhoneNumber, nameof(PhoneNumber));
             internal set => _phoneNumber = value;
         }
+
+        /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public DateTime CreatedAt
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesCreatedAt) ?
@@ -84,15 +100,15 @@ namespace Patreon.Api.V2.Resources
         [Flags]
         public enum IncludeFlag
         {
-            IncludesAddressee = 0b1,
-            IncludesLineOne = 0b10,
-            IncludesLineTwo = 0b100,
-            IncludesPostalCode = 0b1000,
-            IncludesCity = 0b1_0000,
-            IncludesState = 0b10_0000,
-            IncludesCountry = 0b100_0000,
-            IncludesPhoneNumber = 0b1000_0000,
-            IncludesCreatedAt = 0b1_0000_0000
+            IncludesAddressee = 1 << 1,
+            IncludesLineOne = 1 << 2,
+            IncludesLineTwo = 1 << 3,
+            IncludesPostalCode = 1 << 4,
+            IncludesCity = 1 << 5,
+            IncludesState = 1 << 6,
+            IncludesCountry = 1 << 7,
+            IncludesPhoneNumber = 1 << 8,
+            IncludesCreatedAt = 1 << 9
         }
     }
 }
