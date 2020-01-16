@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Patreon.Api.V2.Core.Resources;
+using System;
 
 namespace Patreon.Api.V2.Resources
 {
-    public sealed class User
+    public sealed class User : IUser
     {
         public IncludeFlag IncludeFlags { get; internal set; }
         
@@ -156,6 +155,7 @@ namespace Patreon.Api.V2.Resources
         [Flags]
         public enum IncludeFlag
         {
+            None = 0,
             IncludesEmail = 1 << 0,
             IncludesFirstName = 1 << 1,
             IncludesLastName = 1 << 2,
