@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Patreon.Api.V2.Core.Resources;
+using System;
 
 namespace Patreon.Api.V2.Resources
 {
-    public class Benefit
+    public class Benefit : IBenefit
     {
         public IncludeField IncludeFields { get; internal set; }
 
@@ -126,7 +125,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public object? AppMeta
+        public string? AppMeta
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesAppMeta) ?
                 _appMeta :
@@ -147,13 +146,14 @@ namespace Patreon.Api.V2.Resources
         bool _isPublished;
         bool _isEnded;
         string? _appExternalId;
-        object? _appMeta;
+        string? _appMeta;
 
         /// <summary> Library restricted construcor.</summary>
         internal Benefit() { }
 
         public enum IncludeField
         {
+            None = 0,
             IncludesTitle = 1 << 1,
             IncludesDescripion = 1 << 2,
             IncludesBenefitType = 1 << 3,
