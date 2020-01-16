@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Patreon.Api.V2.Core.Resources;
+using System;
 
 namespace Patreon.Api.V2.Resources
 {
-    public class Address
+    public class Address : IAddress
     {
         public IncludeFlag IncludeFlags { get; internal set; }
 
@@ -97,9 +98,13 @@ namespace Patreon.Api.V2.Resources
         private string? _phoneNumber;
         private DateTime _createdAt;
 
+        /// <summary> Library restricted construcor.</summary>
+        internal Address() { }
+
         [Flags]
         public enum IncludeFlag
         {
+            None = 0,
             IncludesAddressee = 1 << 1,
             IncludesLineOne = 1 << 2,
             IncludesLineTwo = 1 << 3,
