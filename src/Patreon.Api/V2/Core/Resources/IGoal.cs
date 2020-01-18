@@ -6,7 +6,7 @@ namespace Patreon.Api.V2.Core.Resources
     {
         int AmountCents { get; }
         string Title { get; }
-        string? Description { get; }
+        string Description { get; }
         DateTime CreatedAt { get; }
         DateTime? ReachedAt { get; }
         byte CompletedPercentage { get; }

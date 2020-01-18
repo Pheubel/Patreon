@@ -8,7 +8,7 @@ namespace Patreon.Api.V2.Resources
         public IncludeFlag IncludeFlags { get; internal set; }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? Addressee
+        public string Addressee
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesAddressee) ?
                 _addressee :
@@ -17,7 +17,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? LineOne
+        public string LineOne
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesLineOne) ?
                 _lineOne :
@@ -26,7 +26,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? LineTwo
+        public string LineTwo
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesLineTwo) ?
                 _lineTwo :
@@ -35,7 +35,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? PostalCode
+        public string PostalCode
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesPostalCode) ?
                 _postalCode :
@@ -47,13 +47,13 @@ namespace Patreon.Api.V2.Resources
         public string City
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesCity) ?
-                _city! :
+                _city :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesCity, nameof(City));
             internal set => _city = value;
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? State
+        public string State
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesState) ?
                 _state :
@@ -62,16 +62,16 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? Country
+        public string Country
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesCountry) ?
-                _country! :
+                _country :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesCountry, nameof(Country));
             internal set => _country = value;
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? PhoneNumber
+        public string PhoneNumber
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesPhoneNumber) ?
                 _phoneNumber :
@@ -88,14 +88,14 @@ namespace Patreon.Api.V2.Resources
             internal set => _createdAt = value;
         }
 
-        private string? _addressee;
-        private string? _lineOne;
-        private string? _lineTwo;
-        private string? _postalCode;
-        private string? _city;
-        private string? _state;
-        private string? _country;
-        private string? _phoneNumber;
+        private string _addressee;
+        private string _lineOne;
+        private string _lineTwo;
+        private string _postalCode;
+        private string _city;
+        private string _state;
+        private string _country;
+        private string _phoneNumber;
         private DateTime _createdAt;
 
         /// <summary> Library restricted construcor.</summary>

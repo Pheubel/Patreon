@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Patreon.Api.V2
 {
@@ -20,7 +19,7 @@ namespace Patreon.Api.V2
 
     public static class ScopeUtility
     {
-        private static Dictionary<string, ScopeField> _mapping = new Dictionary<string, ScopeField>(capacity: 9)
+        private readonly static Dictionary<string, ScopeField> _mapping = new Dictionary<string, ScopeField>(capacity: 9)
         {
             ["identity"] = ScopeField.Identity,
             ["identity[email]"] = ScopeField.IdentityEmail,
@@ -32,6 +31,10 @@ namespace Patreon.Api.V2
             ["campaigns.posts"] = ScopeField.CampaignPosts,
             ["w:campaigns.webhook"] = ScopeField.CampaignWebhooks
         };
+
+#if NETSTANDARD2_0
+        private readonly static char[] _splitChar = new char[] { ' ' };
+#endif
 
         public static string ToScopeString(ScopeField scope)
         {
@@ -50,7 +53,11 @@ namespace Patreon.Api.V2
 
         public static ScopeField ParseScopeString(string scopeString)
         {
+#if NETSTANDARD2_0
+            var scopeValueStrings = scopeString.Split(_splitChar, StringSplitOptions.RemoveEmptyEntries);
+#else
             var scopeValueStrings = scopeString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+#endif
             ScopeField scopeValue = 0;
 
             for (int i = 0; i < scopeValueStrings.Length; i++)

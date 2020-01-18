@@ -11,13 +11,13 @@ namespace Patreon.Api.V2.Resources
         public string Title
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesTitle) ?
-                _title! :
+                _title :
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesTitle, nameof(Title));
             internal set => _title = value;
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? Description
+        public string Description
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesDescripion) ?
                 _description :
@@ -26,7 +26,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? BenefitType
+        public string BenefitType
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesBenefitType) ?
                 _benefitType :
@@ -35,7 +35,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? RuleType
+        public string RuleType
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesRuleType) ?
                 _ruleType :
@@ -116,7 +116,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? AppExternalId
+        public string AppExternalId
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesAppExternalId) ?
                 _appExternalId :
@@ -125,7 +125,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? AppMeta
+        public string AppMeta
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesAppMeta) ?
                 _appMeta :
@@ -133,10 +133,10 @@ namespace Patreon.Api.V2.Resources
             internal set => _appMeta = value;
         }
 
-        string? _title;
-        string? _description;
-        string? _benefitType;
-        string? _ruleType;
+        string _title;
+        string _description;
+        string _benefitType;
+        string _ruleType;
         DateTime _createdAt;
         int _deliveredDeliverablesCount;
         int _notDeliveredDeliverablesCount;
@@ -145,8 +145,8 @@ namespace Patreon.Api.V2.Resources
         bool _isDeleted;
         bool _isPublished;
         bool _isEnded;
-        string? _appExternalId;
-        string? _appMeta;
+        string _appExternalId;
+        string _appMeta;
 
         /// <summary> Library restricted construcor.</summary>
         internal Benefit() { }

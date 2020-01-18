@@ -17,6 +17,6 @@ namespace Patreon.Api.V2.Core.Resources
         string DownloadUrl { get; }
         string[] ImageUrls { get; }
         DateTime CreatedAt { get; }
-        string? MetaData { get; }
+        string MetaData { get; }
     }
 }

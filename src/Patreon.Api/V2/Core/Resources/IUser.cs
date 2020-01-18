@@ -6,10 +6,10 @@ namespace Patreon.Api.V2.Core.Resources
     public interface IUser
     {
         string Email { get; }
-        string? FirstName { get; }
-        string? LastName { get; }
-        string? Vanity { get; }
-        string? About { get; }
+        string FirstName { get; }
+        string LastName { get; }
+        string Vanity { get; }
+        string About { get; }
         string Url { get; }
         bool IsEmailVerified { get; }
         bool CanSeeNsfw { get; }

@@ -1,6 +1,4 @@
-﻿#nullable disable
-
-using Patreon.Api.Converters;
+﻿using Patreon.Api.Converters;
 using Patreon.Api.V2.Core;
 using System;
 using System.Text.Json.Serialization;

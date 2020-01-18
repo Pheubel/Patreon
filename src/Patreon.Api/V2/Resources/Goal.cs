@@ -16,11 +16,11 @@ namespace Patreon.Api.V2.Resources
         public string Title
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesTitle) ?
-                _title! :
+                _title :
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesTitle, nameof(Title));
             internal set => _title = value;
         }
-        public string? Description
+        public string Description
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesDescription) ?
                 _description :
@@ -50,8 +50,8 @@ namespace Patreon.Api.V2.Resources
         }
 
         int _amountCents;
-        string? _title;
-        string? _description;
+        string _title;
+        string _description;
         DateTime _createdAt;
         DateTime? _reachedAt;
         byte _completedPercentage;

@@ -8,7 +8,7 @@ namespace Patreon.Api.V2.Resources
         public IncludeField IncludeFields { get; internal set; }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? Summary
+        public string Summary
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesSummary) ?
                 _summary :
@@ -17,7 +17,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? CreationName
+        public string CreationName
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesCreationName) ?
                 _creationName :
@@ -26,7 +26,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? PayPername
+        public string PayPername
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesPayPername) ?
                 _payPername :
@@ -35,7 +35,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? OneLiner
+        public string OneLiner
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesOneLiner) ?
                 _oneLiner :
@@ -44,7 +44,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? MainVideoEmbed
+        public string MainVideoEmbed
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesMainVideoEmbed) ?
                 _mainVideoEmbed :
@@ -53,7 +53,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? MainVideoUrl
+        public string MainVideoUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesMainVideoUrl) ?
                 _mainVideoUrl :
@@ -65,7 +65,7 @@ namespace Patreon.Api.V2.Resources
         public string ImageUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesImageUrl) ?
-                _imageUrl! :
+                _imageUrl :
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesImageUrl, nameof(ImageUrl));
             internal set => _imageUrl = value;
         }
@@ -74,13 +74,13 @@ namespace Patreon.Api.V2.Resources
         public string ImageSmallUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesImageSmallUrl) ?
-                _imageSmallUrl! :
+                _imageSmallUrl :
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesImageSmallUrl, nameof(ImageSmallUrl));
             internal set => _imageSmallUrl = value;
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? ThanksVideoUrl
+        public string ThanksVideoUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesThanksVideoUrl) ?
                 _thanksVideoUrl :
@@ -89,7 +89,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? ThanksEmbed
+        public string ThanksEmbed
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesThanksEmbed) ?
                 _thanksEmbed :
@@ -98,7 +98,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? ThanksMessage
+        public string ThanksMessage
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesThanksMessage) ?
                 _thanksMessage :
@@ -137,13 +137,13 @@ namespace Patreon.Api.V2.Resources
         public string RssFeedTitle
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesRssFeedTitle) ?
-                _rssFeedTitle! :
+                _rssFeedTitle :
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesRssFeedTitle, nameof(RssFeedTitle));
             internal set => _rssFeedTitle = value;
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? RssArtworkUrl
+        public string RssArtworkUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesRssArtworkUrl) ?
                 _rssArtworkUrl :
@@ -191,7 +191,7 @@ namespace Patreon.Api.V2.Resources
         public string PledgeUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesPledgeUrl) ?
-                _pledgeUrl! :
+                _pledgeUrl :
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesPledgeUrl, nameof(PledgeUrl));
             internal set => _pledgeUrl = value;
         }
@@ -215,7 +215,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? GoogleAnalyticsId
+        public string GoogleAnalyticsId
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesGoogleAnalyticsId) ?
                 _googleAnalyticsId :
@@ -233,7 +233,7 @@ namespace Patreon.Api.V2.Resources
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
-        public string? Vanity
+        public string Vanity
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesVanity) ?
                   _vanity :
@@ -245,38 +245,38 @@ namespace Patreon.Api.V2.Resources
         public string Url
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesUrl) ?
-                _url! :
+                _url :
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesUrl, nameof(Url));
             internal set => _url = value;
         }
 
-        string? _summary;
-        string? _creationName;
-        string? _payPername;
-        string? _oneLiner;
-        string? _mainVideoEmbed;
-        string? _mainVideoUrl;
-        string? _imageUrl;
-        string? _imageSmallUrl;
-        string? _thanksVideoUrl;
-        string? _thanksEmbed;
-        string? _thanksMessage;
+        string _summary;
+        string _creationName;
+        string _payPername;
+        string _oneLiner;
+        string _mainVideoEmbed;
+        string _mainVideoUrl;
+        string _imageUrl;
+        string _imageSmallUrl;
+        string _thanksVideoUrl;
+        string _thanksEmbed;
+        string _thanksMessage;
         bool _isMonthly;
         bool _hasRss;
         bool _hasSentRssNotification;
-        string? _rssFeedTitle;
-        string? _rssArtworkUrl;
+        string _rssFeedTitle;
+        string _rssArtworkUrl;
         bool _isNsfw;
         bool _isChargedImmediately;
         DateTime _createdAt;
         DateTime? _publishedAt;
-        string? _pledgeUrl;
+        string _pledgeUrl;
         int _patronCount;
         ulong? _discordServerId;
-        string? _googleAnalyticsId;
+        string _googleAnalyticsId;
         bool _showEarnings;
-        string? _vanity;
-        string? _url;
+        string _vanity;
+        string _url;
 
         /// <summary> Library restricted construcor.</summary>
         internal Campaign() { }
