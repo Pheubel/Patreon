@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Resources
 {
-    public class Deliverable : IDeliverable
+    public class Deliverable : IDeliverable<Deliverable.Status>
     {
         public IncludeField IncludedFields { get; internal set; }
         public DateTime CompletedAt

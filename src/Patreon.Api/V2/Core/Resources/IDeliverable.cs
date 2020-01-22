@@ -3,10 +3,11 @@ using System;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IDeliverable : IPatreonResource
+    public interface IDeliverable<TStatus> : IPatreonResource
+        where TStatus : struct, Enum
     {
         DateTime CompletedAt { get; }
-        Deliverable.Status DeliveryStatus { get; }
+        TStatus DeliveryStatus { get; }
         DateTime DueAt { get; }
     }
 }
