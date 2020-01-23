@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IPledge<TPaymentType, TPaymentState>
+    public interface IPledge<TPaymentType, TPaymentState> : IPatreonResource
     {
         string CurrencyCode { get; }
         int AmountCents { get; }

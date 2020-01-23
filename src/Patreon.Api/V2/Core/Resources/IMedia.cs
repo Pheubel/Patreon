@@ -2,7 +2,7 @@
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IMedia
+    public interface IMedia : IPatreonResource
     {
         string FileName { get; }
         int SizeBytes { get; }

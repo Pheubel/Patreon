@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IUser
+    public interface IUser : IPatreonResource
     {
         string Email { get; }
         string FirstName { get; }
