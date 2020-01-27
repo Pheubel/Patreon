@@ -8,7 +8,10 @@ namespace Patreon.Api.V2.Resources
     {
         public IncludeFlag IncludeFlags { get; internal set; }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        #region FIELDS
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}" />
         public string Addressee
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesAddressee) ?
@@ -17,7 +20,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _addressee = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}" />
         public string LineOne
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesLineOne) ?
@@ -26,7 +30,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _lineOne = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}" />
         public string LineTwo
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesLineTwo) ?
@@ -35,7 +40,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _lineTwo = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}" />
         public string PostalCode
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesPostalCode) ?
@@ -44,7 +50,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _postalCode = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}" />
         public string City
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesCity) ?
@@ -53,7 +60,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _city = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}" />
         public string State
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesState) ?
@@ -62,7 +70,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _state = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}" />
         public string Country
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesCountry) ?
@@ -71,7 +80,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _country = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}" />
         public string PhoneNumber
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesPhoneNumber) ?
@@ -80,7 +90,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _phoneNumber = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}" />
         public DateTime CreatedAt
         {
             get => IncludeFlags.HasFlag(IncludeFlag.IncludesCreatedAt) ?
@@ -89,15 +100,27 @@ namespace Patreon.Api.V2.Resources
             internal set => _createdAt = value;
         }
 
+        #endregion
+
+        #region RELATIONS
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException" />
         public User User
         {
             get => _user ?? throw new NotIncludedException();
             internal set => _user = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException" />
         public IReadOnlyCollection<Campaign> Campaigns
         {
             get => _campaigns != null ? Array.AsReadOnly(_campaigns) : throw new NotIncludedException();
         }
+
+        #endregion
+
         private string _addressee;
         private string _lineOne;
         private string _lineTwo;
@@ -110,6 +133,7 @@ namespace Patreon.Api.V2.Resources
 
         private User _user;
         private Campaign[] _campaigns;
+
         /// <summary> Library restricted construcor.</summary>
         internal Address() { }
 
