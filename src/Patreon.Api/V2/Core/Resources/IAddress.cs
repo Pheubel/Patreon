@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Patreon.Api.V2.Resources;
+using System;
+using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
@@ -13,5 +15,8 @@ namespace Patreon.Api.V2.Core.Resources
         string Country { get; }
         string PhoneNumber { get; }
         DateTime CreatedAt { get; }
+
+        User User { get; }
+        IReadOnlyCollection<Campaign> Campaigns { get; }
     }
 }

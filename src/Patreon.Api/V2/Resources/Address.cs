@@ -1,5 +1,6 @@
 ﻿using Patreon.Api.V2.Core.Resources;
 using System;
+using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Resources
 {
@@ -88,6 +89,15 @@ namespace Patreon.Api.V2.Resources
             internal set => _createdAt = value;
         }
 
+        public User User
+        {
+            get => _user ?? throw new NotIncludedException();
+            internal set => _user = value;
+        }
+        public IReadOnlyCollection<Campaign> Campaigns
+        {
+            get => _campaigns != null ? Array.AsReadOnly(_campaigns) : throw new NotIncludedException();
+        }
         private string _addressee;
         private string _lineOne;
         private string _lineTwo;
@@ -98,8 +108,12 @@ namespace Patreon.Api.V2.Resources
         private string _phoneNumber;
         private DateTime _createdAt;
 
+        private User _user;
+        private Campaign[] _campaigns;
         /// <summary> Library restricted construcor.</summary>
         internal Address() { }
+
+        internal void SetCampaigns(Campaign[] campains) => _campaigns = _campaigns = campains;
 
         [Flags]
         public enum IncludeFlag
