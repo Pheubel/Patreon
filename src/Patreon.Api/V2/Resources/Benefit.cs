@@ -78,6 +78,16 @@ namespace Patreon.Api.V2.Resources
             internal set => _notDeliveredDeliverablesCount = value;
         }
 
+        ///  <inheritdoc/>
+        ///  <exception cref="NotIncludedException{IncludeField}" />
+        public int DeliverablesDueTodayCount 
+        {
+            get => IncludeFields.HasFlag(IncludeField.IncludesDeliverablesdueTodayCount) ?
+                _deliverablesDueTodayCount :
+                throw new NotIncludedException<IncludeField>(IncludeField.IncludesDeliverablesdueTodayCount, nameof(DeliverablesDueTodayCount));
+            internal set => _deliverablesDueTodayCount = value;
+        }
+
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}" />
         public DateTime? NextDeliverableDueDate
@@ -170,6 +180,7 @@ namespace Patreon.Api.V2.Resources
         DateTime _createdAt;
         int _deliveredDeliverablesCount;
         int _notDeliveredDeliverablesCount;
+        int _deliverablesDueTodayCount;
         DateTime? _nextDeliverableDueDate;
         int _tiersCount;
         bool _isDeleted;
@@ -201,13 +212,14 @@ namespace Patreon.Api.V2.Resources
             IncludesCreatedAt = 1 << 5,
             IncludesDeliveredDeliverableCount = 1 << 6,
             IncludesNotDeliveredDeliverablesCount = 1 << 7,
-            IncludesNextDeliverableDueDate = 1 << 8,
-            IncludesTiersCount = 1 << 9,
-            IncludesIsDeleted = 1 << 10,
-            IncludesIsPublished = 1 << 11,
-            IncludesIsEnded = 1 << 12,
-            IncludesAppExternalId = 1 << 13,
-            IncludesAppMeta = 1 << 14
+            IncludesDeliverablesdueTodayCount = 1 << 8,
+            IncludesNextDeliverableDueDate = 1 << 9,
+            IncludesTiersCount = 1 << 10,
+            IncludesIsDeleted = 1 << 11,
+            IncludesIsPublished = 1 << 12,
+            IncludesIsEnded = 1 << 13,
+            IncludesAppExternalId = 1 << 14,
+            IncludesAppMeta = 1 << 15
         }
     }
 }
