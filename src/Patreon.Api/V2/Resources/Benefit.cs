@@ -1,5 +1,6 @@
 ﻿using Patreon.Api.V2.Core.Resources;
 using System;
+using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Resources
 {
@@ -133,6 +134,14 @@ namespace Patreon.Api.V2.Resources
             internal set => _appMeta = value;
         }
 
+        public IReadOnlyCollection<Tier> Tiers => _tiers != null ? Array.AsReadOnly(_tiers) : throw new NotIncludedException();
+        public IReadOnlyCollection<Deliverable> Deliverables => _deliverables != null ? Array.AsReadOnly(_deliverables) : throw new NotIncludedException();
+        public Campaign Campaign
+        {
+            get => _campaign ?? throw new NotIncludedException();
+            internal set => _campaign = value;
+        }
+
         string _title;
         string _description;
         string _benefitType;
@@ -147,6 +156,11 @@ namespace Patreon.Api.V2.Resources
         bool _isEnded;
         string _appExternalId;
         string _appMeta;
+
+        Tier[] _tiers;
+        Deliverable[] _deliverables;
+        Campaign _campaign;
+
 
         /// <summary> Library restricted construcor.</summary>
         internal Benefit() { }
