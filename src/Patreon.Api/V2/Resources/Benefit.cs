@@ -185,6 +185,12 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library restricted construcor.</summary>
         internal Benefit() { }
 
+        /// <summary> Sets the tiers of the benefit record.</summary>
+        internal void SetTiers(Tier[] tiers) => _tiers = tiers;
+
+        /// <summary> Sets the deliverables of the benefit record.</summary>
+        internal void SetDeliverables(Deliverable[] deliverables) => _deliverables = deliverables;
+
         public enum IncludeField
         {
             None = 0,
