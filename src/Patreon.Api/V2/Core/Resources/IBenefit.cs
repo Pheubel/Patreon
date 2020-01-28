@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Patreon.Api.V2.Resources;
+using System;
+using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
@@ -18,5 +20,8 @@ namespace Patreon.Api.V2.Core.Resources
         bool IsEnded { get; }
         string AppExternalId { get; }
         string AppMeta { get; }
+        IReadOnlyCollection<Tier> Tiers { get; }
+        IReadOnlyCollection<Deliverable> Deliverables { get; }
+        Campaign Campaign { get; }
     }
 }
