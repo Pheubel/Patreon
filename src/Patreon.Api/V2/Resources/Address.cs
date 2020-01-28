@@ -143,15 +143,17 @@ namespace Patreon.Api.V2.Resources
         public enum IncludeFlag
         {
             None = 0,
-            IncludesAddressee = 1 << 1,
-            IncludesLineOne = 1 << 2,
-            IncludesLineTwo = 1 << 3,
-            IncludesPostalCode = 1 << 4,
-            IncludesCity = 1 << 5,
-            IncludesState = 1 << 6,
-            IncludesCountry = 1 << 7,
-            IncludesPhoneNumber = 1 << 8,
-            IncludesCreatedAt = 1 << 9
+            IncludesAddressee = 1 << 0,
+            IncludesLineOne = 1 << 1,
+            IncludesLineTwo = 1 << 2,
+            IncludesPostalCode = 1 << 3,
+            IncludesCity = 1 << 4,
+            IncludesState = 1 << 5,
+            IncludesCountry = 1 << 6,
+            IncludesPhoneNumber = 1 << 7,
+            IncludesCreatedAt = 1 << 8,
+
+            IncludesAllFields = 0b1_1111_1111
         }
     }
 }
