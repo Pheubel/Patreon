@@ -8,6 +8,7 @@ namespace Patreon.Api.V2.Resources
     {
         public IncludeField IncludeFields { get; internal set; }
 
+        #region FIELDS
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}" />
         public string Title
@@ -156,7 +157,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesAppMeta, nameof(AppMeta));
             internal set => _appMeta = value;
         }
+        #endregion
 
+        #region RELATIONS
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
         public IReadOnlyCollection<Tier> Tiers => _tiers != null ? Array.AsReadOnly(_tiers) : throw new NotIncludedException();
@@ -172,6 +175,7 @@ namespace Patreon.Api.V2.Resources
             get => _campaign ?? throw new NotIncludedException();
             internal set => _campaign = value;
         }
+        #endregion
 
         string _title;
         string _description;
