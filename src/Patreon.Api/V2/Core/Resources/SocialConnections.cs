@@ -1,6 +1,6 @@
-﻿using Patreon.Api.V2.Resources.Socials;
+﻿using Patreon.Api.V2.Core.Resources.Socials;
 
-namespace Patreon.Api.V2.Resources
+namespace Patreon.Api.V2.Core.Resources
 {
     public class SocialConnections
     {

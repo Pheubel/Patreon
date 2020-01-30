@@ -1,11 +1,8 @@
-﻿using Patreon.Api.V2.Core.Resources;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
-namespace Patreon.Api.V2.Resources.Socials
+namespace Patreon.Api.V2.Core.Resources.Socials
 {
-    public class Spotify : IAuthorizedApp<Spotify.Scope>
+    public class DeviantArt : IAuthorizedApp<DeviantArt.Scope>
     {
         public string Id => throw new NotImplementedException();
 
