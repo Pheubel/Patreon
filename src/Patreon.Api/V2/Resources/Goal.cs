@@ -64,6 +64,8 @@ namespace Patreon.Api.V2.Resources
 
         private Campaign _campaign;
 
+        internal Goal() { }
+
         [Flags]
         public enum IncludeField
         {
