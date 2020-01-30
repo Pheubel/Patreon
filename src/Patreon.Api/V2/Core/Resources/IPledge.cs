@@ -9,8 +9,11 @@ namespace Patreon.Api.V2.Core.Resources
         int AmountCents { get; }
         string TierId { get; }
         string TierTitle { get; }
-        Pledge.PaymentState PaymentStatus { get; }
+        TPaymentState PaymentStatus { get; }
         DateTime Date { get; }
-        Pledge.PaymentType Type { get; }
+        TPaymentType Type { get; }
+
+        User User { get; }
+        Campaign Campaign { get; }
     }
 }

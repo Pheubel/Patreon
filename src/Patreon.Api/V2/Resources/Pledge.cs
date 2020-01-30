@@ -56,13 +56,27 @@ namespace Patreon.Api.V2.Resources
             internal set => _currencyCode = value;
         }
 
-        PaymentType _type;
-        DateTime _date;
-        PaymentState _paymentStatus;
-        string _tierTitle;
-        string _tierId;
-        int _amountCents;
-        string _currencyCode;
+        public User User
+        {
+            get => _user ?? throw new NotIncludedException();
+            internal set => _user = value;
+        }
+        public Campaign Campaign
+        {
+            get => _campaign ?? throw new NotIncludedException();
+            internal set => _campaign = value;
+        }
+
+        private PaymentType _type;
+        private DateTime _date;
+        private PaymentState _paymentStatus;
+        private string _tierTitle;
+        private string _tierId;
+        private int _amountCents;
+        private string _currencyCode;
+
+        private User _user;
+        private Campaign _campaign;
 
         public enum PaymentType
         {
