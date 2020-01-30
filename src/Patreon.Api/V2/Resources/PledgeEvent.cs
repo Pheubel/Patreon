@@ -3,10 +3,10 @@ using System;
 
 namespace Patreon.Api.V2.Resources
 {
-    public class Pledge : IPledge<Pledge.PaymentType, Pledge.PaymentState>
+    public class PledgeEvent : IPledgeEvent<PledgeEvent.PledgeType, PledgeEvent.PaymentState>
     {
         public IncludeField IncludesFields { get; internal set; }
-        public PaymentType Type 
+        public PledgeType Type 
         { 
             get => IncludesFields.HasFlag(IncludeField.IncludesType) ?
                 _type :
@@ -67,7 +67,7 @@ namespace Patreon.Api.V2.Resources
             internal set => _campaign = value;
         }
 
-        private PaymentType _type;
+        private PledgeType _type;
         private DateTime _date;
         private PaymentState _paymentStatus;
         private string _tierTitle;
@@ -78,7 +78,7 @@ namespace Patreon.Api.V2.Resources
         private User _user;
         private Campaign _campaign;
 
-        public enum PaymentType
+        public enum PledgeType
         {
             PledgeStart,
             PledgeUpgrade,

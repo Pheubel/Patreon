@@ -40,6 +40,6 @@ namespace Patreon.Api.V2.Core.Resources
         /// <summary> The use who is pledging to the campaign.</summary>
         User User { get; }
         /// <summary> The pledge history of the member.</summary>
-        IReadOnlyCollection<Pledge> PledgeHistory { get; }
+        IReadOnlyCollection<PledgeEvent> PledgeHistory { get; }
     }
 }

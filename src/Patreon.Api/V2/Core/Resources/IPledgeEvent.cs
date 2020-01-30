@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IPledge<TPaymentType, TPaymentState> : IPatreonResource
+    public interface IPledgeEvent<TEventType, TPaymentState> : IPatreonResource
     {
         string CurrencyCode { get; }
         int AmountCents { get; }
@@ -11,7 +11,7 @@ namespace Patreon.Api.V2.Core.Resources
         string TierTitle { get; }
         TPaymentState PaymentStatus { get; }
         DateTime Date { get; }
-        TPaymentType Type { get; }
+        TEventType Type { get; }
 
         User User { get; }
         Campaign Campaign { get; }

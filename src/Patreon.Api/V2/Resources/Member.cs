@@ -154,7 +154,7 @@ namespace Patreon.Api.V2.Resources
 
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
-        public IReadOnlyCollection<Pledge> PledgeHistory =>
+        public IReadOnlyCollection<PledgeEvent> PledgeHistory =>
             _pledgeHistory != null ?
                 Array.AsReadOnly(_pledgeHistory) :
                 throw new NotIncludedException();
@@ -176,7 +176,7 @@ namespace Patreon.Api.V2.Resources
         private Campaign _campaign;
         private Tier[] _entitledTiers;
         private User _user;
-        private Pledge[] _pledgeHistory;
+        private PledgeEvent[] _pledgeHistory;
 
         /// <summary> Library restricted constructor.</summary>
         internal Member() { }
@@ -185,7 +185,7 @@ namespace Patreon.Api.V2.Resources
         internal void SetEntitledTiers(Tier[] tiers) => _entitledTiers = tiers;
 
         /// <summary> sets the pledge history for the member.</summary>
-        internal void SetPledgeHistory(Pledge[] pledges) => _pledgeHistory = pledges;
+        internal void SetPledgeHistory(PledgeEvent[] pledges) => _pledgeHistory = pledges;
 
 
         [Flags]
