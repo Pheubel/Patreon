@@ -6,7 +6,7 @@ namespace Patreon.Api.V2.Resources
     public class Deliverable : IDeliverable<Deliverable.Status>
     {
         public IncludeField IncludedFields { get; internal set; }
-        public DateTime CompletedAt
+        public DateTime? CompletedAt
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesCompletedAt) ?
                 _completedAt :
@@ -48,7 +48,7 @@ namespace Patreon.Api.V2.Resources
             internal set => _user = value;
         }
 
-        private DateTime _completedAt;
+        private DateTime? _completedAt;
         private Status _deliveryStatus;
         private DateTime _dueAt;
 
