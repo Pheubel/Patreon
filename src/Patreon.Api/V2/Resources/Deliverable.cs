@@ -27,10 +27,37 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesDueAt, nameof(DueAt));
             internal set => _dueAt = value;
         }
+        public Campaign Campaign
+        {
+            get => _campaign ?? throw new NotIncludedException();
+            internal set => _campaign = value;
+        }
+        public Benefit Benefit
+        {
+            get => _benefit ?? throw new NotIncludedException();
+            internal set => _benefit = value;
+        }
+        public Member Member
+        {
+            get => _member ?? throw new NotIncludedException();
+            internal set => _member = value;
+        }
+        public User User
+        {
+            get => _user ?? throw new NotIncludedException();
+            internal set => _user = value;
+        }
 
         private DateTime _completedAt;
         private Status _deliveryStatus;
         private DateTime _dueAt;
+
+        private Campaign _campaign;
+        private Benefit _benefit;
+        private Member _member;
+        private User _user;
+
+        internal Deliverable() { }
 
         public enum Status : byte
         {

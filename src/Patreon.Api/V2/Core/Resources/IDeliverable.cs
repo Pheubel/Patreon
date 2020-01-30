@@ -9,5 +9,10 @@ namespace Patreon.Api.V2.Core.Resources
         DateTime CompletedAt { get; }
         TStatus DeliveryStatus { get; }
         DateTime DueAt { get; }
+
+        Campaign Campaign { get; }
+        Benefit Benefit { get; }
+        Member Member { get; }
+        User User { get; }
     }
 }
