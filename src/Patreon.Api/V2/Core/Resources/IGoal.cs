@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Patreon.Api.V2.Resources;
+using System;
 
 namespace Patreon.Api.V2.Core.Resources
 {
@@ -10,5 +11,6 @@ namespace Patreon.Api.V2.Core.Resources
         DateTime CreatedAt { get; }
         DateTime? ReachedAt { get; }
         byte CompletedPercentage { get; }
+        Campaign Campaign { get; }
     }
 }

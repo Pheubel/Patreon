@@ -49,12 +49,20 @@ namespace Patreon.Api.V2.Resources
             internal set => _completedPercentage = value;
         }
 
-        int _amountCents;
-        string _title;
-        string _description;
-        DateTime _createdAt;
-        DateTime? _reachedAt;
-        byte _completedPercentage;
+        public Campaign Campaign
+        {
+            get => _campaign ?? throw new NotIncludedException();
+            internal set => _campaign = value;
+        }
+
+        private int _amountCents;
+        private string _title;
+        private string _description;
+        private DateTime _createdAt;
+        private DateTime? _reachedAt;
+        private byte _completedPercentage;
+
+        private Campaign _campaign;
 
         [Flags]
         public enum IncludeField
