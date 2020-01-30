@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Patreon.Api.V2.Resources;
+using System;
 
 namespace Patreon.Api.V2.Core.Resources
 {
@@ -15,5 +14,8 @@ namespace Patreon.Api.V2.Core.Resources
         string EmbedUrl { get; }
         string AppId { get; }
         string AppStatus { get; }
+
+        User User { get; }
+        Campaign Campaign { get; }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Patreon.Api.V2.Resources
 {
@@ -78,18 +76,32 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesAppStatus, nameof(AppStatus));
             internal set => _appStatus = value;
         }
+        public User User
+        {
+            get => _user ?? throw new NotIncludedException();
+            internal set => _user = value;
+        }
+        public Campaign Campaign
+        {
+            get => _campaign ?? throw new NotIncludedException();
+            internal set => _campaign = value;
+        }
 
+        private string _title;
+        private string _content;
+        private bool _isPaid;
+        private bool _isPublic;
+        private DateTime? _publishedAt;
+        private string _url;
+        private string _embedData;
+        private string _embedUrl;
+        private string _appId;
+        private string _appStatus;
 
-        string _title;
-        string _content;
-        bool _isPaid;
-        bool _isPublic;
-        DateTime? _publishedAt;
-        string _url;
-        string _embedData;
-        string _embedUrl;
-        string _appId;
-        string _appStatus;
+        private User _user;
+        private Campaign _campaign;
+
+        internal Post() { }
 
         [Flags]
         public enum IncludeField
