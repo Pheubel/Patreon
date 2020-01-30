@@ -297,6 +297,10 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library restricted construcor.</summary>
         internal Campaign() { }
 
+        internal void SetTiers(Tier[] tiers) => _tiers = tiers;
+        internal void SetBenefits(Benefit[] benefits) => _benefits = benefits;
+        internal void SetGoals(Goal[] goals) => _goals = goals;
+
         [Flags]
         public enum IncludeField
         {
