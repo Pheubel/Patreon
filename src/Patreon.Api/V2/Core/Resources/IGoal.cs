@@ -10,7 +10,8 @@ namespace Patreon.Api.V2.Core.Resources
         string Description { get; }
         DateTime CreatedAt { get; }
         DateTime? ReachedAt { get; }
-        byte CompletedPercentage { get; }
+        int CompletedPercentage { get; }
+
         Campaign Campaign { get; }
     }
 }

@@ -42,6 +42,7 @@ namespace Patreon.Api.V2.Resources
             internal set => _reachedAt = value;
         }
         public byte CompletedPercentage
+        public int CompletedPercentage
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesCompletedPercentage) ?
                 _completedPercentage :
@@ -60,7 +61,7 @@ namespace Patreon.Api.V2.Resources
         private string _description;
         private DateTime _createdAt;
         private DateTime? _reachedAt;
-        private byte _completedPercentage;
+        private int _completedPercentage;
 
         private Campaign _campaign;
 
