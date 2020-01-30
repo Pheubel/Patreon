@@ -128,6 +128,7 @@ namespace Patreon.Api.V2.Resources
         private User _user;
         private Pledge[] _pledgeHistory;
 
+        internal Member() { }
         internal void SetEntitledTiers(Tier[] tiers) => _entitledTiers = tiers;
         internal void SetPledgeHistory(Pledge[] pledges) => _pledgeHistory = pledges;
 
