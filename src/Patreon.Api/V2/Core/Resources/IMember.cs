@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Patreon.Api.V2.Resources;
+using System;
+using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
@@ -17,5 +19,11 @@ namespace Patreon.Api.V2.Core.Resources
         TChargeState LastChargeStatus { get; }
         string Note { get; }
         int WillPayAmountCents { get; }
+
+        Address Address { get; }
+        Campaign Campaign { get; }
+        IReadOnlyCollection<Tier> EntitledTiers { get; }
+        User User { get; }
+        IReadOnlyCollection<Pledge> PledgeHistory { get; }
     }
 }
