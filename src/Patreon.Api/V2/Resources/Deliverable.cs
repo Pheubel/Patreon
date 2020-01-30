@@ -6,6 +6,10 @@ namespace Patreon.Api.V2.Resources
     public class Deliverable : IDeliverable<Deliverable.Status>
     {
         public IncludeField IncludedFields { get; internal set; }
+
+        #region FIELDS
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime? CompletedAt
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesCompletedAt) ?
@@ -13,6 +17,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesCompletedAt, nameof(CompletedAt));
             internal set => _completedAt = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public Status DeliveryStatus
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesDeliveryStatus) ?
@@ -20,6 +27,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesDeliveryStatus, nameof(DeliveryStatus));
             internal set => _deliveryStatus = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime DueAt
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesDueAt) ?
@@ -27,26 +37,41 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesDueAt, nameof(DueAt));
             internal set => _dueAt = value;
         }
+        #endregion
+
+        #region RELATIONS
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public Campaign Campaign
         {
             get => _campaign ?? throw new NotIncludedException();
             internal set => _campaign = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public Benefit Benefit
         {
             get => _benefit ?? throw new NotIncludedException();
             internal set => _benefit = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public Member Member
         {
             get => _member ?? throw new NotIncludedException();
             internal set => _member = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public User User
         {
             get => _user ?? throw new NotIncludedException();
             internal set => _user = value;
         }
+        #endregion
 
         private DateTime? _completedAt;
         private Status _deliveryStatus;
@@ -57,6 +82,7 @@ namespace Patreon.Api.V2.Resources
         private Member _member;
         private User _user;
 
+        /// <summary> Library restricted construcor.</summary>
         internal Deliverable() { }
 
         public enum Status : byte
