@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Patreon.Api.V2.Resources;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -21,5 +22,9 @@ namespace Patreon.Api.V2.Core.Resources
         bool Published { get; }
         DateTime? PublishedAt { get; }
         DateTime? UnpublishedAt { get; }
+
+        Campaign Campaign { get; }
+        Media Media { get; }
+        IReadOnlyCollection<Benefit> Benefits { get; }
     }
 }

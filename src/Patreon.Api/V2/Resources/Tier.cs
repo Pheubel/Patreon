@@ -129,6 +129,21 @@ namespace Patreon.Api.V2.Resources
             internal set => _unpublishedAt = value;
         }
 
+        public Campaign Campaign
+        {
+            get => _campaign ?? throw new NotIncludedException();
+            internal set => _campaign = value;
+        }
+        public Media Media
+        {
+            get => _tierImage ?? throw new NotIncludedException();
+            internal set => _tierImage = value;
+        }
+        public IReadOnlyCollection<Benefit> Benefits =>
+            _benefits != null ?
+                Array.AsReadOnly(_benefits) :
+                throw new NotIncludedException();
+
         int _amountCents;
         int _userLimit;
         int? _remaining;
@@ -145,6 +160,12 @@ namespace Patreon.Api.V2.Resources
         bool _published;
         DateTime? _publishedAt;
         DateTime? _unpublishedAt;
+
+        Campaign _campaign;
+        Media _tierImage;
+        Benefit[] _benefits;
+
+        internal Tier() { }
 
         internal void SetDiscordRoleIds(ulong[] roleIds) => _discordRoleIds = roleIds;
 
