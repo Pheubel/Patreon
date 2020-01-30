@@ -8,7 +8,8 @@ namespace Patreon.Api.V2.Resources
     {
         public IncludeField IncludeFields { get; internal set; }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Summary
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesSummary) ?
@@ -17,7 +18,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _summary = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string CreationName
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesCreationName) ?
@@ -26,7 +28,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _creationName = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string PayPername
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesPayPername) ?
@@ -35,7 +38,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _payPername = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string OneLiner
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesOneLiner) ?
@@ -44,7 +48,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _oneLiner = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string MainVideoEmbed
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesMainVideoEmbed) ?
@@ -53,7 +58,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _mainVideoEmbed = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string MainVideoUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesMainVideoUrl) ?
@@ -62,7 +68,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _mainVideoUrl = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string ImageUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesImageUrl) ?
@@ -71,7 +78,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _imageUrl = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string ImageSmallUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesImageSmallUrl) ?
@@ -80,7 +88,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _imageSmallUrl = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string ThanksVideoUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesThanksVideoUrl) ?
@@ -89,7 +98,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _thanksVideoUrl = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string ThanksEmbed
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesThanksEmbed) ?
@@ -98,7 +108,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _thanksEmbed = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string ThanksMessage
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesThanksMessage) ?
@@ -107,7 +118,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _thanksMessage = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public bool IsMonthly
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesIsMonthly) ?
@@ -116,7 +128,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _isMonthly = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public bool HasRss
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesHasRss) ?
@@ -125,7 +138,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _hasRss = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public bool HasSentRssNotification
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesHasSentRssNotification) ?
@@ -134,7 +148,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _hasSentRssNotification = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string RssFeedTitle
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesRssFeedTitle) ?
@@ -143,7 +158,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _rssFeedTitle = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string RssArtworkUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesRssArtworkUrl) ?
@@ -152,7 +168,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _rssArtworkUrl = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public bool IsNsfw
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesIsNsfw) ?
@@ -161,7 +178,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _isNsfw = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public bool IsChargedImmediately
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesIsChargedImmediately) ?
@@ -170,7 +188,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _isChargedImmediately = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime CreatedAt
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesCreatedAt) ?
@@ -179,7 +198,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _createdAt = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime? PublishedAt
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesPublishedAt) ?
@@ -188,7 +208,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _publishedAt = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string PledgeUrl
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesPledgeUrl) ?
@@ -197,7 +218,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _pledgeUrl = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public int PatronCount
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesPatronCount) ?
@@ -206,7 +228,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _patronCount = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public ulong? DiscordServerId
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesDiscordServerId) ?
@@ -215,7 +238,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _discordServerId = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string GoogleAnalyticsId
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesGoogleAnalyticsId) ?
@@ -224,7 +248,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _googleAnalyticsId = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public bool ShowEarnings
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesShowEarings) ?
@@ -233,7 +258,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _showEarnings = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Vanity
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesVanity) ?
@@ -242,7 +268,8 @@ namespace Patreon.Api.V2.Resources
             internal set => _vanity = value;
         }
 
-        /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Url
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesUrl) ?
@@ -250,55 +277,71 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesUrl, nameof(Url));
             internal set => _url = value;
         }
-
+        
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public IReadOnlyCollection<Tier> Tiers => _tiers != null ? Array.AsReadOnly(_tiers) : throw new NotIncludedException();
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public User Creator
         {
             get => _creator ?? throw new NotIncludedException();
             internal set => _creator = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public IReadOnlyCollection<Benefit> Benefits => _benefits != null ? Array.AsReadOnly(_benefits) : throw new NotIncludedException();
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public IReadOnlyCollection<Goal> Goals => _goals != null ? Array.AsReadOnly(_goals) : throw new NotIncludedException();
 
-        string _summary;
-        string _creationName;
-        string _payPername;
-        string _oneLiner;
-        string _mainVideoEmbed;
-        string _mainVideoUrl;
-        string _imageUrl;
-        string _imageSmallUrl;
-        string _thanksVideoUrl;
-        string _thanksEmbed;
-        string _thanksMessage;
-        bool _isMonthly;
-        bool _hasRss;
-        bool _hasSentRssNotification;
-        string _rssFeedTitle;
-        string _rssArtworkUrl;
-        bool _isNsfw;
-        bool _isChargedImmediately;
-        DateTime _createdAt;
-        DateTime? _publishedAt;
-        string _pledgeUrl;
-        int _patronCount;
-        ulong? _discordServerId;
-        string _googleAnalyticsId;
-        bool _showEarnings;
-        string _vanity;
-        string _url;
+        private string _summary;
+        private string _creationName;
+        private string _payPername;
+        private string _oneLiner;
+        private string _mainVideoEmbed;
+        private string _mainVideoUrl;
+        private string _imageUrl;
+        private string _imageSmallUrl;
+        private string _thanksVideoUrl;
+        private string _thanksEmbed;
+        private string _thanksMessage;
+        private bool _isMonthly;
+        private bool _hasRss;
+        private bool _hasSentRssNotification;
+        private string _rssFeedTitle;
+        private string _rssArtworkUrl;
+        private bool _isNsfw;
+        private bool _isChargedImmediately;
+        private DateTime _createdAt;
+        private DateTime? _publishedAt;
+        private string _pledgeUrl;
+        private int _patronCount;
+        private ulong? _discordServerId;
+        private string _googleAnalyticsId;
+        private bool _showEarnings;
+        private string _vanity;
+        private string _url;
 
-        Tier[] _tiers;
-        User _creator;
-        Benefit[] _benefits;
-        Goal[] _goals;
+        private Tier[] _tiers;
+        private User _creator;
+        private Benefit[] _benefits;
+        private Goal[] _goals;
 
 
         /// <summary> Library restricted construcor.</summary>
         internal Campaign() { }
 
+        /// <summary> Sets the tiers for this campaign.</summary>
         internal void SetTiers(Tier[] tiers) => _tiers = tiers;
+
+        /// <summary> Sets the benefits for this campaign.</summary>
         internal void SetBenefits(Benefit[] benefits) => _benefits = benefits;
+
+        /// <summary> Sets the goals for this campaign.</summary>
         internal void SetGoals(Goal[] goals) => _goals = goals;
 
         [Flags]
