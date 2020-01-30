@@ -6,6 +6,10 @@ namespace Patreon.Api.V2.Resources
     public class PledgeEvent : IPledgeEvent<PledgeEvent.PledgeType, PledgeEvent.PaymentState>
     {
         public IncludeField IncludesFields { get; internal set; }
+
+        #region FIELDS
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public PledgeType Type 
         { 
             get => IncludesFields.HasFlag(IncludeField.IncludesType) ?
@@ -13,6 +17,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesType, nameof(Type));
             internal set => _type = value; 
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime Date 
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesDate) ?
@@ -20,6 +27,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesDate, nameof(Date));
             internal set => _date = value; 
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public PaymentState PaymentStatus 
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesPaymentStatus) ?
@@ -27,6 +37,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesPaymentStatus, nameof(PaymentStatus));
             internal set => _paymentStatus = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string TierTitle 
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesTierTitle) ?
@@ -34,6 +47,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesTierTitle, nameof(TierTitle)); 
             internal set => _tierTitle = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string TierId 
         {
             get =>IncludesFields.HasFlag(IncludeField.IncludesTierId) ?
@@ -41,6 +57,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesTierId, nameof(TierId)); 
             internal set => _tierId = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public int AmountCents 
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesAmountCents) ?
@@ -48,6 +67,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesAmountCents, nameof(AmountCents));
             internal set => _amountCents = value; 
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string CurrencyCode 
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesCurrencyCode) ?
@@ -55,17 +77,25 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesCurrencyCode, nameof(CurrencyCode)); 
             internal set => _currencyCode = value;
         }
+        #endregion
 
+        #region RELATIONS
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public User User
         {
             get => _user ?? throw new NotIncludedException();
             internal set => _user = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public Campaign Campaign
         {
             get => _campaign ?? throw new NotIncludedException();
             internal set => _campaign = value;
         }
+        #endregion
 
         private PledgeType _type;
         private DateTime _date;
