@@ -1,13 +1,15 @@
 ﻿using Patreon.Api.V2.Core.Resources;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Patreon.Api.V2.Resources
 {
     public class Webhook : IWebhook<Webhook.Trigger>
     {
         public IncludeField IncludesFields { get; internal set; }
+
+        #region FIELDS
+        /// <inheritdoc/>>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public Trigger Triggers
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesTriggers) ?
@@ -15,6 +17,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesTriggers, nameof(Triggers));
             internal set => _triggers = value;
         }
+
+        /// <inheritdoc/>>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public Uri Uri
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesUri) ?
@@ -22,6 +27,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesUri, nameof(Uri));
             internal set => _uri = value;
         }
+
+        /// <inheritdoc/>>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public bool Paused
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesPaused) ?
@@ -29,6 +37,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesPaused, nameof(Paused));
             internal set => _paused = value;
         }
+
+        /// <inheritdoc/>>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime LastAttemptedAt
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesLastAttemptedAt) ?
@@ -36,6 +47,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesLastAttemptedAt, nameof(LastAttemptedAt));
             internal set => _lastAttemptedAt = value;
         }
+
+        /// <inheritdoc/>>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public int NumConsecutiveTimesFailed
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesNumConsecutiveTimesFailed) ?
@@ -43,6 +57,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesNumConsecutiveTimesFailed, nameof(NumConsecutiveTimesFailed));
             internal set => _numConsecutiveTimesFailed = value;
         }
+
+        /// <inheritdoc/>>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Secret
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesSecret) ?
@@ -50,6 +67,25 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesSecret, nameof(Secret));
             internal set => _secret = value;
         }
+        #endregion
+
+        #region RELATIONS
+        /// <inheritdoc/>>
+        /// <exception cref="NotIncludedException"/>
+        public OAuthClient Client
+        {
+            get => _client ?? throw new NotIncludedException();
+            internal set => _client = value;
+        }
+
+        /// <inheritdoc/>>
+        /// <exception cref="NotIncludedException"/>
+        public Campaign Campaign
+        {
+            get => _campaign ?? throw new NotIncludedException();
+            internal set => _campaign = value;
+        }
+        #endregion
 
         Trigger _triggers;
         Uri _uri;
@@ -57,6 +93,12 @@ namespace Patreon.Api.V2.Resources
         DateTime _lastAttemptedAt;
         int _numConsecutiveTimesFailed;
         string _secret;
+
+        OAuthClient _client;
+        Campaign _campaign;
+
+        /// <summary> Library restricted constructor.</summary>
+        internal Webhook() { }
 
         [Flags]
         public enum Trigger
