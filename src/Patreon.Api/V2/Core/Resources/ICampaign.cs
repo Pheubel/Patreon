@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Patreon.Api.V2.Resources;
+using System;
+using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
@@ -25,5 +27,9 @@ namespace Patreon.Api.V2.Core.Resources
         DateTime CreatedAt { get;  }
         DateTime? PublishedAt { get;  }
         string PledgeUrl { get;  }
+        IReadOnlyCollection<Tier> Tiers { get; }
+        User Creator { get; }
+        IReadOnlyCollection<Benefit> Benefits { get; }
+        IReadOnlyCollection<Goal> Goals { get; }
     }
 }

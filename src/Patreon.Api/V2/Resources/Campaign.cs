@@ -1,5 +1,6 @@
 ﻿using Patreon.Api.V2.Core.Resources;
 using System;
+using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Resources
 {
@@ -250,6 +251,15 @@ namespace Patreon.Api.V2.Resources
             internal set => _url = value;
         }
 
+        public IReadOnlyCollection<Tier> Tiers => _tiers != null ? Array.AsReadOnly(_tiers) : throw new NotIncludedException();
+        public User Creator
+        {
+            get => _creator ?? throw new NotIncludedException();
+            internal set => _creator = value;
+        }
+        public IReadOnlyCollection<Benefit> Benefits => _benefits != null ? Array.AsReadOnly(_benefits) : throw new NotIncludedException();
+        public IReadOnlyCollection<Goal> Goals => _goals != null ? Array.AsReadOnly(_goals) : throw new NotIncludedException();
+
         string _summary;
         string _creationName;
         string _payPername;
@@ -277,6 +287,12 @@ namespace Patreon.Api.V2.Resources
         bool _showEarnings;
         string _vanity;
         string _url;
+
+        Tier[] _tiers;
+        User _creator;
+        Benefit[] _benefits;
+        Goal[] _goals;
+
 
         /// <summary> Library restricted construcor.</summary>
         internal Campaign() { }
