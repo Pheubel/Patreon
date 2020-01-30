@@ -117,9 +117,9 @@ namespace Patreon.Api.V2.Resources
             get => _user ?? throw new NotIncludedException();
             internal set => _user = value;
         }
+
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
-
         public Campaign Campaign
         {
             get => _campaign ?? throw new NotIncludedException();
@@ -141,6 +141,7 @@ namespace Patreon.Api.V2.Resources
         private User _user;
         private Campaign _campaign;
 
+        /// <summary> Library specific constructor.</summary>
         internal Post() { }
 
         [Flags]
