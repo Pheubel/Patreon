@@ -8,6 +8,9 @@ namespace Patreon.Api.V2.Resources
     {
         public IncludeField IncludesFields { get; internal set; }
 
+        #region FIELDS
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string ClientSecret
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesClientSecret) ?
@@ -15,6 +18,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesClientSecret, nameof(ClientSecret));
             internal set => _clientSecret = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Name
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesName) ?
@@ -22,6 +28,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesName, nameof(Name));
             internal set => _name = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Description
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesDescription) ?
@@ -29,6 +38,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesDescription, nameof(Description));
             internal set => _description = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string AuthorName
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesAuthorName) ?
@@ -36,6 +48,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesAuthorName, nameof(AuthorName));
             internal set => _authorName = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Domain
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesDomain) ?
@@ -43,6 +58,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesDomain, nameof(Domain));
             internal set => _domain = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public int Version
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesVersion) ?
@@ -50,6 +68,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesVersion, nameof(Version));
             internal set => _version = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string IconUrl
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesIconUrl) ?
@@ -57,6 +78,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesIconUrl, nameof(IconUrl));
             internal set => _iconUrl = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string PrivacyPolicyUrl
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesPrivacyPolicyUrl) ?
@@ -64,6 +88,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesPrivacyPolicyUrl, nameof(PrivacyPolicyUrl));
             internal set => _privacyPolicyUrl = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string TosUrl
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesTosUrl) ?
@@ -71,25 +98,40 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesTosUrl, nameof(TosUrl));
             internal set => _tosUrl = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public IReadOnlyCollection<string> RedirectUris
         {
             get => _redirectUris;
         }
+        #endregion
+
+        #region RELATIONS
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public User User
         {
             get => _user ?? throw new NotIncludedException();
             internal set => _user = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public Campaign Campaign
         {
             get => _campaign ?? throw new NotIncludedException();
             internal set => _campaign = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public TokenResponse CreatorToken
         {
             get => _creatorToken ?? throw new NotIncludedException();
             internal set => _creatorToken = value;
         }
+        #endregion
 
         private string _clientSecret;
         private string _name;
@@ -106,8 +148,10 @@ namespace Patreon.Api.V2.Resources
         private Campaign _campaign;
         private TokenResponse _creatorToken;
 
+        /// <summary> Library exclusive contructor.</summary>
         internal OAuthClient() { }
 
+        /// <summary> Sets the redirect urls of the client.</summary>
         internal void SetRedirectUrls(string[] urls) => _redirectUris = urls;
 
         [Flags]
