@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Patreon.Api.V2.Core.Resources;
-using System.Text;
 
 namespace Patreon.Api.V2.Resources
 {
@@ -16,7 +15,7 @@ namespace Patreon.Api.V2.Resources
             internal set => _amountCents = value;
         }
 
-        public int UserLimit
+        public int? UserLimit
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesUserLimit) ?
                 _userLimit :
@@ -79,8 +78,11 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesPostCount, nameof(PostCount));
             internal set => _postCount = value;
         }
-        public IReadOnlyCollection<ulong> DiscordRoleIds => _discordRoleIds == null ? null : Array.AsReadOnly(_discordRoleIds);
 
+        public IReadOnlyCollection<ulong> DiscordRoleIds =>
+            IncludesFields.HasFlag(IncludeField.IncludesDiscordRoleIds) ?
+                Array.AsReadOnly(_discordRoleIds) :
+                throw new NotIncludedException<IncludeField>(IncludeField.IncludesDiscordRoleIds,nameof(DiscordRoleIds));
         public string Title
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesTitle) ?
@@ -143,31 +145,35 @@ namespace Patreon.Api.V2.Resources
             _benefits != null ?
                 Array.AsReadOnly(_benefits) :
                 throw new NotIncludedException();
+        #endregion
 
-        int _amountCents;
-        int _userLimit;
-        int? _remaining;
-        string _description;
-        bool _requiresShipping;
-        DateTime _createdAt;
-        string _url;
-        int _patronCount;
-        int _postCount;
-        ulong[] _discordRoleIds;
-        string _title;
-        string _imageUrl;
-        DateTime _editedAt;
-        bool _published;
-        DateTime? _publishedAt;
-        DateTime? _unpublishedAt;
+        private int _amountCents;
+        private int? _userLimit;
+        private int? _remaining;
+        private string _description;
+        private bool _requiresShipping;
+        private DateTime _createdAt;
+        private string _url;
+        private int _patronCount;
+        private int _postCount;
+        private ulong[] _discordRoleIds;
+        private string _title;
+        private string _imageUrl;
+        private DateTime _editedAt;
+        private bool _published;
+        private DateTime? _publishedAt;
+        private DateTime? _unpublishedAt;
 
-        Campaign _campaign;
-        Media _tierImage;
-        Benefit[] _benefits;
+        private Campaign _campaign;
+        private Media _tierImage;
+        private Benefit[] _benefits;
 
+        /// <summary> Library specific constructor.</summary>
         internal Tier() { }
 
         internal void SetDiscordRoleIds(ulong[] roleIds) => _discordRoleIds = roleIds;
+
+        internal void SetBenefits(Benefit[] benefits) => _benefits = benefits;
 
         [Flags]
         public enum IncludeField
