@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Patreon.Api.V2.Core.Resources;
+using System;
 
 namespace Patreon.Api.V2.Resources
 {
-    public class Post
+    public class Post : IPost
     {
         public IncludeField IncludesFields { get; internal set; }
 
+        #region FIELDS
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Title
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesTitle) ?
@@ -13,6 +17,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesTitle, nameof(Title));
             internal set => _title = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Content
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesContent) ?
@@ -20,6 +27,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesContent, nameof(Content));
             internal set => _content = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public bool IsPaid
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesIsPaid) ?
@@ -27,6 +37,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesIsPaid, nameof(IsPaid));
             internal set => _isPaid = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public bool IsPublic
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesIsPublic) ?
@@ -34,6 +47,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesIsPublic, nameof(IsPublic));
             internal set => _isPublic = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime? PublishedAt
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesPublishedAt) ?
@@ -41,6 +57,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesPublishedAt, nameof(PublishedAt));
             internal set => _publishedAt = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Url
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesUrl) ?
@@ -48,6 +67,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesUrl, nameof(Url));
             internal set => _url = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string EmbedData
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesEmbedData) ?
@@ -55,6 +77,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesEmbedData, nameof(EmbedData));
             internal set => _embedData = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string EmbedUrl
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesEmbedurl) ?
@@ -62,6 +87,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesEmbedurl, nameof(EmbedUrl));
             internal set => _embedUrl = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string AppId
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesAppId) ?
@@ -69,6 +97,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesAppId, nameof(AppId));
             internal set => _appId = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string AppStatus
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesAppStatus) ?
@@ -76,16 +107,25 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesAppStatus, nameof(AppStatus));
             internal set => _appStatus = value;
         }
+        #endregion
+
+        #region RELATIONS
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public User User
         {
             get => _user ?? throw new NotIncludedException();
             internal set => _user = value;
         }
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
+
         public Campaign Campaign
         {
             get => _campaign ?? throw new NotIncludedException();
             internal set => _campaign = value;
         }
+        #endregion
 
         private string _title;
         private string _content;
