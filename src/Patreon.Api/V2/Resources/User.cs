@@ -1,16 +1,17 @@
 ﻿using Patreon.Api.V2.Core.Resources;
 using System;
+using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Resources
 {
     public sealed class User : IUser
     {
-        public IncludeFlag IncludeFlags { get; internal set; }
+        public IncludeFlag IncludesField { get; internal set; }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string Email
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesEmail) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesEmail) ?
                 _email :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesEmail, nameof(Email));
             internal set => _email = value;
@@ -19,7 +20,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string FirstName
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesFirstName) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesFirstName) ?
                 _firstname :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesFirstName, nameof(FirstName));
             internal set => _firstname = value;
@@ -28,16 +29,24 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string LastName
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesLastName) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesLastName) ?
                 _lastName :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesLastName, nameof(LastName));
             internal set => _lastName = value;
         }
 
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
+        public string FullName
+        {
+            get => IncludesField.HasFlag(IncludeFlag.IncludesFullName) ?
+                _fullName :
+                throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesFullName, nameof(FullName));
+            internal set => _fullName = value;
+        }
+
         public string Vanity
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesVanity) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesVanity) ?
                 _vanity :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesVanity, nameof(Vanity));
             internal set => _vanity = value;
@@ -46,7 +55,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string About
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesAbout) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesAbout) ?
                 _about :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesAbout, nameof(About));
             internal set => _about = value;
@@ -55,7 +64,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string Url
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesUrl) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesUrl) ?
                 _url :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesUrl, nameof(Url));
             internal set => _url = value;
@@ -64,7 +73,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public bool IsEmailVerified
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesIsEmailVerified) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesIsEmailVerified) ?
                 _isEmailVerified :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesIsEmailVerified, nameof(IsEmailVerified));
             internal set => _isEmailVerified = value;
@@ -73,7 +82,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public bool CanSeeNsfw
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesCanSeeNsfw) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesCanSeeNsfw) ?
                 _canSeeNsfw :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesCanSeeNsfw, nameof(CanSeeNsfw));
             internal set => _canSeeNsfw = value;
@@ -82,7 +91,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public bool HidesPledges
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesHidePledges) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesHidePledges) ?
                 _hidesPledges :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesHidePledges, nameof(HidesPledges));
             internal set => _hidesPledges = value;
@@ -91,7 +100,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public DateTime CreatedAt
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesCreatedAt) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesCreatedAt) ?
                 _createdAt :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesCreatedAt, nameof(CreatedAt));
             internal set => _createdAt = value;
@@ -100,7 +109,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string AvatarUrl
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesAvatar) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesAvatar) ?
                 _avatarUrl :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesAvatar, nameof(AvatarUrl));
             internal set => _avatarUrl = value;
@@ -109,7 +118,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public string AvatarThumbnailUrl
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesAvatarThumbnail) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesAvatarThumbnail) ?
                 _avatarThumbnailUrl :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesAvatarThumbnail, nameof(AvatarThumbnailUrl));
             internal set => _avatarThumbnailUrl = value;
@@ -118,7 +127,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public int LikeCount
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesLikeCount) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesLikeCount) ?
                 _likeCount :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesLikeCount, nameof(LikeCount));
             internal set => _likeCount = value;
@@ -127,15 +136,29 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"></exception>
         public SocialConnections SocialConnections
         {
-            get => IncludeFlags.HasFlag(IncludeFlag.IncludesSocialConnections) ?
+            get => IncludesField.HasFlag(IncludeFlag.IncludesSocialConnections) ?
                 _socialConnections :
                 throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesSocialConnections, nameof(SocialConnections));
             internal set => _socialConnections = value;
         }
 
+        public IReadOnlyCollection<Member> Members => 
+            _members != null ?
+                Array.AsReadOnly(_members) :
+                throw new NotIncludedException();
+
+        public Campaign Campaign
+        {
+            get => IncludesField.HasFlag(IncludeFlag.IncludesCampaign) ?
+                _campaign :
+                throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesCampaign,nameof(Campaign));
+            internal set => _campaign = value;
+        }
+
         private string _email;
         private string _firstname;
         private string _lastName;
+        private string _fullName;
         private string _vanity;
         private string _about;
         private string _url;
@@ -148,9 +171,13 @@ namespace Patreon.Api.V2.Resources
         private int _likeCount;
         private SocialConnections _socialConnections;
 
+        private Member[] _members;
+        private Campaign _campaign;
+
         /// <summary> Library restricted construcor.</summary>
         internal User() { }
 
+        internal void SetMemberships(Member[] members) => _members = members;
 
         [Flags]
         public enum IncludeFlag
@@ -170,7 +197,8 @@ namespace Patreon.Api.V2.Resources
             IncludesLikeCount = 1 << 11,
             IncludesHidePledges = 1 << 12,
             IncludesSocialConnections = 1 << 13,
-            IncludesUrl = 1 << 14
+            IncludesUrl = 1 << 14,
+            IncludesCampaign = 1 << 15
         }
     }
 }
