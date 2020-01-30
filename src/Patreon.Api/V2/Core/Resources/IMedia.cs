@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
@@ -15,7 +16,7 @@ namespace Patreon.Api.V2.Core.Resources
         string UploadUrl { get; }
         string UploadParameters { get; }
         string DownloadUrl { get; }
-        string[] ImageUrls { get; }
+        IReadOnlyCollection<string> ImageUrls { get; }
         DateTime CreatedAt { get; }
         string MetaData { get; }
     }

@@ -1,5 +1,6 @@
 ﻿using Patreon.Api.V2.Core.Resources;
 using System;
+using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Resources
 {
@@ -83,13 +84,10 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesDownloadurl, nameof(DownloadUrl));
             internal set => _downloadUrl = value;
         }
-        public string[] ImageUrls
-        {
-            get =>IncludesFields.HasFlag(IncludeField.IncludesImageUrls) ?
-                _imageUrls :
-                throw new NotIncludedException<IncludeField>(IncludeField.IncludesImageUrls, nameof(ImageUrls));
-            internal set => _imageUrls = value;
-        }
+        public IReadOnlyCollection<string> ImageUrls => 
+            IncludesFields.HasFlag(IncludeField.IncludesImageUrls) ? 
+                Array.AsReadOnly(_imageUrls) : 
+                throw new NotIncludedException<IncludeField>(IncludeField.IncludesImageUrls,nameof(ImageUrls));
         public DateTime CreatedAt
         {
             get => IncludesFields.HasFlag(IncludeField.IncludesCreatedAt) ?
@@ -119,6 +117,10 @@ namespace Patreon.Api.V2.Resources
         private string[] _imageUrls;
         private DateTime _createdAt;
         private string _metaData;
+
+        internal Media() { }
+
+        internal void SetImageUrls(string[] urls) => _imageUrls = urls;
 
         [Flags]
         public enum IncludeField
