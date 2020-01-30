@@ -6,6 +6,10 @@ namespace Patreon.Api.V2.Resources
     public class Goal : IGoal
     {
         public IncludeField IncludedFields { get; private set; }
+
+        #region FIELDS
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public int AmountCents
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesAmountCents) ?
@@ -13,6 +17,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesAmountCents, nameof(AmountCents));
             internal set => _amountCents = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Title
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesTitle) ?
@@ -20,6 +27,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesTitle, nameof(Title));
             internal set => _title = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Description
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesDescription) ?
@@ -27,6 +37,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesDescription, nameof(Description));
             internal set => _description = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime CreatedAt
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesCreatedAt) ?
@@ -34,6 +47,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesCreatedAt, nameof(CreatedAt));
             internal set => _createdAt = value;
         }
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime? ReachedAt
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesReachedAt) ?
@@ -41,7 +57,9 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesReachedAt, nameof(ReachedAt));
             internal set => _reachedAt = value;
         }
-        public byte CompletedPercentage
+
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException{IncludeField}"/>
         public int CompletedPercentage
         {
             get => IncludedFields.HasFlag(IncludeField.IncludesCompletedPercentage) ?
@@ -49,12 +67,17 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesCompletedPercentage, nameof(CompletedPercentage));
             internal set => _completedPercentage = value;
         }
+        #endregion
 
+        #region RELATIONS
+        /// <inheritdoc/>
+        /// <exception cref="NotIncludedException"/>
         public Campaign Campaign
         {
             get => _campaign ?? throw new NotIncludedException();
             internal set => _campaign = value;
         }
+        #endregion
 
         private int _amountCents;
         private string _title;
@@ -65,6 +88,7 @@ namespace Patreon.Api.V2.Resources
 
         private Campaign _campaign;
 
+        /// <summary> Library restricted constructor.</summary>
         internal Goal() { }
 
         [Flags]
