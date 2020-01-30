@@ -1,5 +1,6 @@
 ﻿using Patreon.Api.V2.Resources;
 using System;
+using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
@@ -12,6 +13,7 @@ namespace Patreon.Api.V2.Core.Resources
         /// <summary> The user's last name.</summary>
         string LastName { get; }
         /// <summary> The user's full name.</summary>
+        string FullName { get; }
         /// <summary> The public username of the user.</summary>
         string Vanity { get; }
         /// <summary> The user's about text displayed on their profile.</summary>
@@ -34,11 +36,15 @@ namespace Patreon.Api.V2.Core.Resources
         int LikeCount { get; }
         /// <summary> The mapping of the user's connected apps.</summary>
         SocialConnections SocialConnections { get; }
+
         /// <summary> The memberships of the user.</summary>
         /// <remarks> 
         /// Requires "identity.memberships" scope to get all campaigns the identity user
         /// is a member of.
         /// </remarks>
+        IReadOnlyCollection<Member> Members { get; }
         /// <summary> The user's campaign.</summary>
+        Campaign Campaign { get; }
+       
     }
 }
