@@ -283,24 +283,16 @@ namespace Patreon.Api.V2.Resources
 
         #region RELATIONS
         /// <inheritdoc/>
-        /// <exception cref="NotIncludedException"/>
-        public IReadOnlyCollection<Tier> Tiers => _tiers != null ? Array.AsReadOnly(_tiers) : throw new NotIncludedException();
+        public IReadOnlyCollection<Tier> Tiers => _tiers != null ? Array.AsReadOnly(_tiers) : Array.AsReadOnly(Array.Empty<Tier>());
 
         /// <inheritdoc/>
-        /// <exception cref="NotIncludedException"/>
-        public User Creator
-        {
-            get => _creator ?? throw new NotIncludedException();
-            internal set => _creator = value;
-        }
+        public User Creator { get; internal set; }
 
         /// <inheritdoc/>
-        /// <exception cref="NotIncludedException"/>
-        public IReadOnlyCollection<Benefit> Benefits => _benefits != null ? Array.AsReadOnly(_benefits) : throw new NotIncludedException();
+        public IReadOnlyCollection<Benefit> Benefits => _benefits != null ? Array.AsReadOnly(_benefits) : Array.AsReadOnly(Array.Empty<Benefit>());
 
         /// <inheritdoc/>
-        /// <exception cref="NotIncludedException"/>
-        public IReadOnlyCollection<Goal> Goals => _goals != null ? Array.AsReadOnly(_goals) : throw new NotIncludedException();
+        public IReadOnlyCollection<Goal> Goals => _goals != null ? Array.AsReadOnly(_goals) : Array.AsReadOnly(Array.Empty<Goal>());
         #endregion
 
         private string _summary;
@@ -332,7 +324,6 @@ namespace Patreon.Api.V2.Resources
         private string _url;
 
         private Tier[] _tiers;
-        private User _creator;
         private Benefit[] _benefits;
         private Goal[] _goals;
 

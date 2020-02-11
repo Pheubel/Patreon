@@ -163,21 +163,13 @@ namespace Patreon.Api.V2.Resources
 
         #region RELATIONS
         /// <inheritdoc/>
-        /// <exception cref="NotIncludedException"/>
-        public IReadOnlyCollection<Member> Members => 
+        public IReadOnlyCollection<Member> Members =>
             _members != null ?
                 Array.AsReadOnly(_members) :
-                throw new NotIncludedException();
+                Array.AsReadOnly(Array.Empty<Member>());
 
         /// <inheritdoc/>
-        /// <exception cref="NotIncludedException{IncludeField}"/>
-        public Campaign Campaign
-        {
-            get => IncludesField.HasFlag(IncludeFlag.IncludesCampaign) ?
-                _campaign :
-                throw new NotIncludedException<IncludeFlag>(IncludeFlag.IncludesCampaign,nameof(Campaign));
-            internal set => _campaign = value;
-        }
+        public Campaign Campaign { get; internal set; }
         #endregion
 
         private string _email;
@@ -225,8 +217,7 @@ namespace Patreon.Api.V2.Resources
             IncludesLikeCount = 1 << 11,
             IncludesHidePledges = 1 << 12,
             IncludesSocialConnections = 1 << 13,
-            IncludesUrl = 1 << 14,
-            IncludesCampaign = 1 << 15
+            IncludesUrl = 1 << 14
         }
     }
 }
