@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IBenefit : IPatreonResource
+    public interface IBenefit : IPatreonResource<int>
     {
         /// <summary> The display title of the benefit.</summary>
         string Title { get; }

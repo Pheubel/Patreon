@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IDeliverable<TStatus> : IPatreonResource
+    public interface IDeliverable<TStatus> : IPatreonResource<int>
         where TStatus : struct, Enum
     {
         /// <summary> When the creator marked the diliverable as completed or fulfulled to the patron.</summary>

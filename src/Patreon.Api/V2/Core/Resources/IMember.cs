@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IMember<TPatronState,TChargeState> : IPatreonResource
+    public interface IMember<TPatronState,TChargeState> : IPatreonResource<Guid>
         where TPatronState : struct, Enum
         where TChargeState : struct, Enum
     {

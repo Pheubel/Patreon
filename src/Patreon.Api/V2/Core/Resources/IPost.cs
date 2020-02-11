@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IPost : IPatreonResource
+    public interface IPost : IPatreonResource<int>
     {
         /// <summary> The title of the post.</summary>
         string Title { get; }

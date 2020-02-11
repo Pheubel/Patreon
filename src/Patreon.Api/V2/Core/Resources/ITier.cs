@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface ITier
+    public interface ITier : IPatreonResource<int>
     {
         /// <summary> Monetary amount associeted with this tier.</summary>
         int AmountCents { get; }

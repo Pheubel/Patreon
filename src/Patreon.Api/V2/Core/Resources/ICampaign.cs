@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface ICampaign : IPatreonResource
+    public interface ICampaign : IPatreonResource<int>
     {
         /// <summary> The summary of the campaign.</summary>
         string Summary { get; }

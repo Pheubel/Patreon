@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IWebhook<TTrigger>
+    public interface IWebhook<TTrigger> : IPatreonResource<int>
         where TTrigger : struct, Enum
     {
         /// <summary> The events that will trigger the webhook.</summary>

@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IPledgeEvent<TEventType, TPaymentState> : IPatreonResource
+    public interface IPledgeEvent<TEventType, TPaymentState> : IPatreonResource<long>
     {
         /// <summary> The ISO code of the currency.</summary>
         string CurrencyCode { get; }

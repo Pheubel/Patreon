@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IGoal : IPatreonResource
+    public interface IGoal : IPatreonResource<int>
     {
         /// <summary> The goal amount in USD cents.</summary>
         int AmountCents { get; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IUser : IPatreonResource
+    public interface IUser : IPatreonResource<int>
     {
         /// <summary> The user's email address.</summary>
         string Email { get; }

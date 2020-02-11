@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IOAuthClient<TAuthToken, TTokenScopes> : IPatreonResource
+    public interface IOAuthClient<TAuthToken, TTokenScopes> : IPatreonResource<int>
         where TAuthToken : ITokenResponse<TTokenScopes>
         where TTokenScopes : struct, Enum
     {

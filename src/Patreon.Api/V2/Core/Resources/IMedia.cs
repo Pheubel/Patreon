@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.V2.Core.Resources
 {
-    public interface IMedia : IPatreonResource
+    public interface IMedia : IPatreonResource<int>
     {
         /// <summary> the name of the file.</summary>
         string FileName { get; }
