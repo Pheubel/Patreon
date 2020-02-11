@@ -7,6 +7,7 @@ namespace Patreon.Api.V2.Resources
     public sealed class User : IUser
     {
         public IncludeFlag IncludesField { get; internal set; }
+        public int Id { get; internal set; }
 
         #region FIELDS
         /// <inheritdoc/>
@@ -203,6 +204,8 @@ namespace Patreon.Api.V2.Resources
 
         /// <summary> Sets the memberships for the user.</summary>
         internal void SetMemberships(Member[] members) => _members = members;
+
+        string IPatreonResource.IdString => Id.ToString();
 
         [Flags]
         public enum IncludeFlag

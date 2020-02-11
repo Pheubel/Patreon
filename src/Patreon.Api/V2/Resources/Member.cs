@@ -7,6 +7,7 @@ namespace Patreon.Api.V2.Resources
     public class Member : IMember<Member.PatronState, Member.ChargeState>
     {
         public IncludeField IncludesFields { get; internal set; }
+        public Guid Id { get; internal set; }
 
         #region FIELDS
         /// <inheritdoc/>
@@ -187,6 +188,7 @@ namespace Patreon.Api.V2.Resources
         /// <summary> sets the pledge history for the member.</summary>
         internal void SetPledgeHistory(PledgeEvent[] pledges) => _pledgeHistory = pledges;
 
+        string IPatreonResource.IdString => Id.ToString();
 
         [Flags]
         public enum IncludeField

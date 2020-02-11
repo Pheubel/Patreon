@@ -5,6 +5,7 @@ namespace Patreon.Api.V2.Resources
 {
     public class Deliverable : IDeliverable<Deliverable.Status>
     {
+        public int Id { get; internal set; }
         public IncludeField IncludedFields { get; internal set; }
 
         #region FIELDS
@@ -84,6 +85,8 @@ namespace Patreon.Api.V2.Resources
 
         /// <summary> Library restricted construcor.</summary>
         internal Deliverable() { }
+
+        string IPatreonResource.IdString => Id.ToString();
 
         public enum Status : byte
         {

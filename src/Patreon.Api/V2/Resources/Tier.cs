@@ -6,6 +6,7 @@ namespace Patreon.Api.V2.Resources
 {
     public class Tier : ITier
     {
+        public int Id { get; internal set; }
         public IncludeField IncludesFields { get; internal set; }
 
         #region FIELDS
@@ -221,6 +222,8 @@ namespace Patreon.Api.V2.Resources
 
         /// <summary> Sets the benefits for this tier.</summary>
         internal void SetBenefits(Benefit[] benefits) => _benefits = benefits;
+
+        string IPatreonResource.IdString => Id.ToString();
 
         [Flags]
         public enum IncludeField

@@ -6,6 +6,7 @@ namespace Patreon.Api.V2.Resources
 {
     public class OAuthClient : IOAuthClient<TokenResponse, ScopeField>
     {
+        public int Id { get; internal set; }
         public IncludeField IncludesFields { get; internal set; }
 
         #region FIELDS
@@ -153,6 +154,8 @@ namespace Patreon.Api.V2.Resources
 
         /// <summary> Sets the redirect urls of the client.</summary>
         internal void SetRedirectUrls(string[] urls) => _redirectUris = urls;
+
+        string IPatreonResource.IdString => Id.ToString();
 
         [Flags]
         public enum IncludeField

@@ -6,6 +6,7 @@ namespace Patreon.Api.V2.Resources
 {
     public class Address : IAddress
     {
+        public int Id { get; internal set; }
         public IncludeFlag IncludeFlags { get; internal set; }
 
         #region FIELDS
@@ -138,6 +139,8 @@ namespace Patreon.Api.V2.Resources
         internal Address() { }
 
         internal void SetCampaigns(Campaign[] campains) => _campaigns = _campaigns = campains;
+
+        string IPatreonResource.IdString => Id.ToString();
 
         [Flags]
         public enum IncludeFlag

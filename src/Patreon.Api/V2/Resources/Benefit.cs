@@ -6,6 +6,7 @@ namespace Patreon.Api.V2.Resources
 {
     public class Benefit : IBenefit
     {
+        public int Id { get; internal set; }
         public IncludeField IncludeFields { get; internal set; }
 
         #region FIELDS
@@ -205,6 +206,8 @@ namespace Patreon.Api.V2.Resources
 
         /// <summary> Sets the deliverables of the benefit record.</summary>
         internal void SetDeliverables(Deliverable[] deliverables) => _deliverables = deliverables;
+
+        string IPatreonResource.IdString => Id.ToString();
 
         public enum IncludeField
         {

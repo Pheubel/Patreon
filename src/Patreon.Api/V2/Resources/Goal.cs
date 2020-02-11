@@ -5,6 +5,7 @@ namespace Patreon.Api.V2.Resources
 {
     public class Goal : IGoal
     {
+        public int Id { get; internal set; }
         public IncludeField IncludedFields { get; private set; }
 
         #region FIELDS
@@ -90,6 +91,8 @@ namespace Patreon.Api.V2.Resources
 
         /// <summary> Library restricted constructor.</summary>
         internal Goal() { }
+
+        string IPatreonResource.IdString => Id.ToString();
 
         [Flags]
         public enum IncludeField

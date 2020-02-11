@@ -5,6 +5,7 @@ namespace Patreon.Api.V2.Resources
 {
     public class Webhook : IWebhook<Webhook.Trigger>
     {
+        public int Id { get; internal set; }
         public IncludeField IncludesFields { get; internal set; }
 
         #region FIELDS
@@ -99,6 +100,8 @@ namespace Patreon.Api.V2.Resources
 
         /// <summary> Library restricted constructor.</summary>
         internal Webhook() { }
+
+        string IPatreonResource.IdString => Id.ToString();
 
         [Flags]
         public enum Trigger

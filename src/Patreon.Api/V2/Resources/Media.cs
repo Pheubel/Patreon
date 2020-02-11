@@ -6,6 +6,7 @@ namespace Patreon.Api.V2.Resources
 {
     public class Media : IMedia
     {
+        public int Id { get; internal set; }
         public IncludeField IncludesFields { get; internal set; }
 
         #region FIELDS
@@ -167,6 +168,8 @@ namespace Patreon.Api.V2.Resources
 
         /// <summary> Sets the image URLs for the media.</summary>
         internal void SetImageUrls(string[] urls) => _imageUrls = urls;
+
+        string IPatreonResource.IdString => Id.ToString();
 
         [Flags]
         public enum IncludeField

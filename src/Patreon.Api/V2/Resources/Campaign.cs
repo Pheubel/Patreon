@@ -6,6 +6,7 @@ namespace Patreon.Api.V2.Resources
 {
     public class Campaign : ICampaign
     {
+        public int Id { get; internal set; }
         public IncludeField IncludeFields { get; internal set; }
 
         #region FIELDS
@@ -347,6 +348,8 @@ namespace Patreon.Api.V2.Resources
 
         /// <summary> Sets the goals for this campaign.</summary>
         internal void SetGoals(Goal[] goals) => _goals = goals;
+
+        string IPatreonResource.IdString => Id.ToString();
 
         [Flags]
         public enum IncludeField
