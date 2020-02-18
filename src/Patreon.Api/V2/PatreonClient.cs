@@ -104,5 +104,39 @@ namespace Patreon.Api.V2
 
             return token;
         }
+
+        public async Task<User> GetIdentityAsync(TokenResponse token, IIdentityBuilder<User> builder)
+        {
+            if (token == null)
+                throw new ArgumentNullException(nameof(token));
+            if (builder == null)
+                throw new ArgumentNullException(nameof(builder));
+            
+            HttpResponseMessage response = default;
+            HttpRequestMessage request = default;
+            try
+            {
+                request = new HttpRequestMessage(HttpMethod.Get,builder.ApiEndpoint);
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.AccessToken);
+
+                response = await HttpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                request.Dispose();
+            }
+            catch
+            {
+                request?.Dispose();
+                response?.Dispose();
+
+                throw;
+            }
+
+            var user = builder.BuildIdentity(await response.Content.ReadAsStringAsync());
+
+            response.Dispose();
+
+            return user;
+        }
     }
 }
