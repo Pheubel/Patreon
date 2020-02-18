@@ -132,9 +132,11 @@ namespace Patreon.Api.V2
                 throw;
             }
 
-            var user = builder.BuildIdentity(await response.Content.ReadAsStringAsync());
+            var userStream = await response.Content.ReadAsStreamAsync();
+            var user = builder.BuildIdentity(userStream);
 
             response.Dispose();
+            userStream?.Dispose();
 
             return user;
         }

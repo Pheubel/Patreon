@@ -1,4 +1,5 @@
 ﻿using Patreon.Api.V2.Core.Resources;
+using System.IO;
 using System.Net.Http;
 
 namespace Patreon.Api.V2.Core.Builders
@@ -8,6 +9,6 @@ namespace Patreon.Api.V2.Core.Builders
     {
         string ApiEndpoint { get; }
         FormUrlEncodedContent BuildRequestContent();
-        TUser BuildIdentity(string userString);
+        TUser BuildIdentity(Stream userStream);
     }
 }
