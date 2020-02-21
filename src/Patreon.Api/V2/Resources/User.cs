@@ -1,6 +1,8 @@
-﻿using Patreon.Api.V2.Core.Resources;
+﻿using Patreon.Api.Converters;
+using Patreon.Api.Core.V2.Resources;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Patreon.Api.V2.Resources
 {
@@ -163,10 +165,7 @@ namespace Patreon.Api.V2.Resources
 
         #region RELATIONS
         /// <inheritdoc/>
-        public IReadOnlyCollection<Member> Members =>
-            _members != null ?
-                Array.AsReadOnly(_members) :
-                Array.AsReadOnly(Array.Empty<Member>());
+        public IReadOnlyCollection<Member> Members { get; internal set; }
 
         /// <inheritdoc/>
         public Campaign Campaign { get; internal set; }
@@ -188,16 +187,13 @@ namespace Patreon.Api.V2.Resources
         private int _likeCount;
         private SocialConnections _socialConnections;
 
-        private Member[] _members;
-        private Campaign _campaign;
-
         /// <summary> Library restricted construcor.</summary>
         internal User() { }
 
-        /// <summary> Sets the memberships for the user.</summary>
-        internal void SetMemberships(Member[] members) => _members = members;
-
         string IPatreonResource.IdString => Id.ToString();
+
+        IReadOnlyCollection<IMember> IUser.Members => Members;
+        ICampaign IUser.Campaign => Campaign;
 
         [Flags]
         public enum IncludeFlag

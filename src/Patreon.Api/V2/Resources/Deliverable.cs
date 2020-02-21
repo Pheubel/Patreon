@@ -1,4 +1,4 @@
-﻿using Patreon.Api.V2.Core.Resources;
+﻿using Patreon.Api.Core.V2.Resources;
 using System;
 
 namespace Patreon.Api.V2.Resources
@@ -87,6 +87,12 @@ namespace Patreon.Api.V2.Resources
         internal Deliverable() { }
 
         string IPatreonResource.IdString => Id.ToString();
+
+        Enum IDeliverable.DeliveryStatusValue => DeliveryStatus;
+        ICampaign IDeliverable.Campaign => Campaign;
+        IBenefit IDeliverable.Benefit => Benefit;
+        IMember IDeliverable.Member => Member;
+        IUser IDeliverable.User => User;
 
         public enum Status : byte
         {

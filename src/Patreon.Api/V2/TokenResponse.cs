@@ -1,5 +1,5 @@
 ﻿using Patreon.Api.Converters;
-using Patreon.Api.V2.Core;
+using Patreon.Api.Core.V2;
 using System;
 using System.Text.Json.Serialization;
 
@@ -13,5 +13,7 @@ namespace Patreon.Api.V2
         public DateTime ExpiresAt { get; internal set; }
         public ScopeField Scope { get; internal set; }
         public const string TokenType = "Bearer";
+
+        Enum ITokenResponse.Scopevalue => Scope;
     }
 }

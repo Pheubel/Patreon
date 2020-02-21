@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Patreon.Api.V2.Core.Resources;
+using Patreon.Api.Core.V2.Resources;
 
 namespace Patreon.Api.V2.Resources
 {
@@ -102,10 +102,13 @@ namespace Patreon.Api.V2.Resources
 
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}"/>
-        public IReadOnlyCollection<ulong> DiscordRoleIds =>
-            IncludesFields.HasFlag(IncludeField.IncludesDiscordRoleIds) ?
-                Array.AsReadOnly(_discordRoleIds) :
-                throw new NotIncludedException<IncludeField>(IncludeField.IncludesDiscordRoleIds,nameof(DiscordRoleIds));
+        public IReadOnlyCollection<ulong> DiscordRoleIds
+        {
+            get => IncludesFields.HasFlag(IncludeField.IncludesDiscordRoleIds) ?
+                _discordRoleIds :
+                throw new NotIncludedException<IncludeField>(IncludeField.IncludesDiscordRoleIds, nameof(DiscordRoleIds));
+            internal set => _discordRoleIds = value;
+        }
 
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}"/>
@@ -187,10 +190,13 @@ namespace Patreon.Api.V2.Resources
 
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
-        public IReadOnlyCollection<Benefit> Benefits =>
-            _benefits != null ?
-                Array.AsReadOnly(_benefits) :
+        public IReadOnlyCollection<Benefit> Benefits
+        {
+            get => _benefits != null ?
+                _benefits :
                 throw new NotIncludedException();
+            internal set => _benefits = value;
+        }
         #endregion
 
         private int _amountCents;
@@ -202,7 +208,7 @@ namespace Patreon.Api.V2.Resources
         private string _url;
         private int _patronCount;
         private int _postCount;
-        private ulong[] _discordRoleIds;
+        private IReadOnlyCollection<ulong> _discordRoleIds;
         private string _title;
         private string _imageUrl;
         private DateTime _editedAt;
@@ -212,18 +218,16 @@ namespace Patreon.Api.V2.Resources
 
         private Campaign _campaign;
         private Media _tierImage;
-        private Benefit[] _benefits;
+        private IReadOnlyCollection<Benefit> _benefits;
 
         /// <summary> Library specific constructor.</summary>
         internal Tier() { }
 
-        /// <summary> Sets the discord role ID's for this tier.</summary>
-        internal void SetDiscordRoleIds(ulong[] roleIds) => _discordRoleIds = roleIds;
-
-        /// <summary> Sets the benefits for this tier.</summary>
-        internal void SetBenefits(Benefit[] benefits) => _benefits = benefits;
-
         string IPatreonResource.IdString => Id.ToString();
+
+        ICampaign ITier.Campaign => _campaign;
+        IMedia ITier.Media => _tierImage;
+        IReadOnlyCollection<IBenefit> ITier.Benefits => _benefits;
 
         [Flags]
         public enum IncludeField

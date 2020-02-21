@@ -1,4 +1,5 @@
-﻿using Patreon.Api.V2.Core.Resources;
+﻿using Patreon.Api.Core.V2;
+using Patreon.Api.Core.V2.Resources;
 using System;
 using System.Collections.Generic;
 
@@ -104,7 +105,10 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public IReadOnlyCollection<string> RedirectUris
         {
-            get => _redirectUris;
+            get => IncludesFields.HasFlag(IncludeField.IncludesRedirectUris) ?
+               _redirectUris :
+               throw new NotIncludedException<IncludeField>(IncludeField.IncludesRedirectUris, nameof(TosUrl));
+            internal set => _redirectUris = value;
         }
         #endregion
 
@@ -143,7 +147,7 @@ namespace Patreon.Api.V2.Resources
         private string _iconUrl;
         private string _privacyPolicyUrl;
         private string _tosUrl;
-        private string[] _redirectUris;
+        private IReadOnlyCollection<string> _redirectUris;
 
         private User _user;
         private Campaign _campaign;
@@ -152,10 +156,11 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library exclusive contructor.</summary>
         internal OAuthClient() { }
 
-        /// <summary> Sets the redirect urls of the client.</summary>
-        internal void SetRedirectUrls(string[] urls) => _redirectUris = urls;
-
         string IPatreonResource.IdString => Id.ToString();
+
+        IUser IOAuthClient.User => User;
+        ICampaign IOAuthClient.Campaign => Campaign;
+        ITokenResponse IOAuthClient.CreatorToken => CreatorToken;
 
         [Flags]
         public enum IncludeField

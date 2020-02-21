@@ -1,4 +1,4 @@
-﻿using Patreon.Api.V2.Core.Resources;
+﻿using Patreon.Api.Core.V2.Resources;
 using System;
 using System.Collections.Generic;
 
@@ -117,7 +117,8 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException" />
         public IReadOnlyCollection<Campaign> Campaigns
         {
-            get => _campaigns != null ? Array.AsReadOnly(_campaigns) : throw new NotIncludedException();
+            get => _campaigns ?? throw new NotIncludedException();
+            internal set => _campaigns = value;
         }
 
         #endregion
@@ -133,14 +134,15 @@ namespace Patreon.Api.V2.Resources
         private DateTime _createdAt;
 
         private User _user;
-        private Campaign[] _campaigns;
+        private IReadOnlyCollection<Campaign> _campaigns;
 
         /// <summary> Library restricted construcor.</summary>
         internal Address() { }
 
-        internal void SetCampaigns(Campaign[] campains) => _campaigns = _campaigns = campains;
-
         string IPatreonResource.IdString => Id.ToString();
+
+        IUser IAddress.User => User;
+        IReadOnlyCollection<ICampaign> IAddress.Campaigns => Campaigns;
 
         [Flags]
         public enum IncludeFlag

@@ -1,4 +1,4 @@
-﻿using Patreon.Api.V2.Core.Resources;
+﻿using Patreon.Api.Core.V2.Resources;
 using System;
 
 namespace Patreon.Api.V2.Resources
@@ -9,7 +9,7 @@ namespace Patreon.Api.V2.Resources
         public IncludeField IncludesFields { get; internal set; }
 
         #region FIELDS
-        /// <inheritdoc/>>
+        /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public Trigger Triggers
         {
@@ -19,7 +19,7 @@ namespace Patreon.Api.V2.Resources
             internal set => _triggers = value;
         }
 
-        /// <inheritdoc/>>
+        /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public Uri Uri
         {
@@ -29,7 +29,7 @@ namespace Patreon.Api.V2.Resources
             internal set => _uri = value;
         }
 
-        /// <inheritdoc/>>
+        /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public bool Paused
         {
@@ -39,7 +39,7 @@ namespace Patreon.Api.V2.Resources
             internal set => _paused = value;
         }
 
-        /// <inheritdoc/>>
+        /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime LastAttemptedAt
         {
@@ -49,7 +49,7 @@ namespace Patreon.Api.V2.Resources
             internal set => _lastAttemptedAt = value;
         }
 
-        /// <inheritdoc/>>
+        /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public int NumConsecutiveTimesFailed
         {
@@ -59,7 +59,7 @@ namespace Patreon.Api.V2.Resources
             internal set => _numConsecutiveTimesFailed = value;
         }
 
-        /// <inheritdoc/>>
+        /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public string Secret
         {
@@ -71,7 +71,7 @@ namespace Patreon.Api.V2.Resources
         #endregion
 
         #region RELATIONS
-        /// <inheritdoc/>>
+        /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
         public OAuthClient Client
         {
@@ -79,7 +79,7 @@ namespace Patreon.Api.V2.Resources
             internal set => _client = value;
         }
 
-        /// <inheritdoc/>>
+        /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
         public Campaign Campaign
         {
@@ -102,6 +102,10 @@ namespace Patreon.Api.V2.Resources
         internal Webhook() { }
 
         string IPatreonResource.IdString => Id.ToString();
+
+        Enum IWebhook.TriggersValue => Triggers;
+        IOAuthClient IWebhook.Client => Client;
+        ICampaign IWebhook.Campaign => Campaign;
 
         [Flags]
         public enum Trigger

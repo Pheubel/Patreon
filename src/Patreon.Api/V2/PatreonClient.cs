@@ -1,20 +1,18 @@
-﻿using Patreon.Api.V2.Builders;
-using Patreon.Api.V2.Core;
-using Patreon.Api.V2.Core.Builders;
-using Patreon.Api.V2.Core.Resources;
-using Patreon.Api.V2.Resources;
+﻿using Patreon.Api.Core.V2;
+using Patreon.Api.Core.V2.Builders;
+using Patreon.Api.Core.V2.Api;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Patreon.Api.V2.Resources;
 
 namespace Patreon.Api.V2
 {
     public abstract class PatreonClient :
-        ITokenClient<TokenResponse,ScopeField>,
-        IIdentityClient<User,TokenResponse,ScopeField>
+        ITokenClient<TokenResponse, ScopeField>,
+        IIdentityClient<User, Campaign, TokenResponse, ScopeField>
     {
         protected HttpClient HttpClient { get; }
 
@@ -111,12 +109,12 @@ namespace Patreon.Api.V2
                 throw new ArgumentNullException(nameof(token));
             if (builder == null)
                 throw new ArgumentNullException(nameof(builder));
-            
+
             HttpResponseMessage response = default;
             HttpRequestMessage request = default;
             try
             {
-                request = new HttpRequestMessage(HttpMethod.Get,builder.ApiEndpoint);
+                request = new HttpRequestMessage(HttpMethod.Get, "api/oauth2/v2/identity");
                 request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.AccessToken);
 
                 response = await HttpClient.SendAsync(request);
@@ -133,12 +131,51 @@ namespace Patreon.Api.V2
             }
 
             var userStream = await response.Content.ReadAsStreamAsync();
-            var user = builder.BuildIdentity(userStream);
+            var user = await builder.BuildIdentityAsync(userStream);
 
             response.Dispose();
             userStream?.Dispose();
 
             return user;
+        }
+
+        public async Task<Campaign> GetIdentityCampaignAsync(TokenResponse token, ICampaignBuilder<Campaign> builder)
+        {
+            if (token == null)
+                throw new ArgumentNullException(nameof(token));
+            if (builder == null)
+                throw new ArgumentNullException(nameof(builder));
+
+            if (!token.Scope.HasFlag(ScopeField.Campaigns))
+                throw new Exception("Token does not allow access to the user's campaign.");
+
+            HttpResponseMessage response = default;
+            HttpRequestMessage request = default;
+            try
+            {
+                request = new HttpRequestMessage(HttpMethod.Get, "api/oauth2/v2/campaigns");
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.AccessToken);
+
+                response = await HttpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                request.Dispose();
+            }
+            catch
+            {
+                request?.Dispose();
+                response?.Dispose();
+
+                throw;
+            }
+
+            var campaignStream = await response.Content.ReadAsStreamAsync();
+            var campaign = await builder.BuildCampaignAsync(campaignStream);
+
+            response.Dispose();
+            campaignStream?.Dispose();
+
+            return campaign;
         }
     }
 }

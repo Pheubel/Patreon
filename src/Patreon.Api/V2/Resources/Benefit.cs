@@ -1,4 +1,4 @@
-﻿using Patreon.Api.V2.Core.Resources;
+﻿using Patreon.Api.Core.V2.Resources;
 using System;
 using System.Collections.Generic;
 
@@ -82,7 +82,7 @@ namespace Patreon.Api.V2.Resources
 
         ///  <inheritdoc/>
         ///  <exception cref="NotIncludedException{IncludeField}" />
-        public int DeliverablesDueTodayCount 
+        public int DeliverablesDueTodayCount
         {
             get => IncludeFields.HasFlag(IncludeField.IncludesDeliverablesdueTodayCount) ?
                 _deliverablesDueTodayCount :
@@ -163,11 +163,19 @@ namespace Patreon.Api.V2.Resources
         #region RELATIONS
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
-        public IReadOnlyCollection<Tier> Tiers => _tiers != null ? Array.AsReadOnly(_tiers) : throw new NotIncludedException();
+        public IReadOnlyCollection<Tier> Tiers
+        {
+            get => _tiers ?? throw new NotIncludedException(); 
+            internal set => _tiers = value;
+        }
 
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
-        public IReadOnlyCollection<Deliverable> Deliverables => _deliverables != null ? Array.AsReadOnly(_deliverables) : throw new NotIncludedException();
+        public IReadOnlyCollection<Deliverable> Deliverables
+        {
+            get => _deliverables ?? throw new NotIncludedException();
+            internal set => _deliverables = value;
+        }
 
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
@@ -194,20 +202,18 @@ namespace Patreon.Api.V2.Resources
         string _appExternalId;
         string _appMeta;
 
-        Tier[] _tiers;
-        Deliverable[] _deliverables;
+        IReadOnlyCollection<Tier> _tiers;
+        IReadOnlyCollection<Deliverable> _deliverables;
         Campaign _campaign;
 
         /// <summary> Library restricted construcor.</summary>
         internal Benefit() { }
 
-        /// <summary> Sets the tiers of the benefit record.</summary>
-        internal void SetTiers(Tier[] tiers) => _tiers = tiers;
-
-        /// <summary> Sets the deliverables of the benefit record.</summary>
-        internal void SetDeliverables(Deliverable[] deliverables) => _deliverables = deliverables;
-
         string IPatreonResource.IdString => Id.ToString();
+
+        IReadOnlyCollection<ITier> IBenefit.Tiers => Tiers;
+        IReadOnlyCollection<IDeliverable> IBenefit.Deliverables => Deliverables;
+        ICampaign IBenefit.Campaign => Campaign;
 
         public enum IncludeField
         {

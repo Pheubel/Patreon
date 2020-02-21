@@ -1,4 +1,4 @@
-﻿using Patreon.Api.V2.Core.Resources;
+﻿using Patreon.Api.Core.V2.Resources;
 using System;
 
 namespace Patreon.Api.V2.Resources
@@ -41,6 +41,11 @@ namespace Patreon.Api.V2.Resources
         internal PledgeEvent() { }
 
         string IPatreonResource.IdString => Id.ToString();
+
+        Enum IPledgeEvent.TypeValue => Type;
+        Enum IPledgeEvent.PaymentStatusValue => PaymentStatus;
+        IUser IPledgeEvent.User => User;
+        ICampaign IPledgeEvent.Campaign => Campaign;
 
         public enum PledgeType
         {

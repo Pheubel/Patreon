@@ -1,4 +1,4 @@
-﻿using Patreon.Api.V2.Core.Resources;
+﻿using Patreon.Api.Core.V2.Resources;
 using System;
 using System.Collections.Generic;
 
@@ -122,10 +122,13 @@ namespace Patreon.Api.V2.Resources
 
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}"/>
-        public IReadOnlyCollection<string> ImageUrls => 
-            IncludesFields.HasFlag(IncludeField.IncludesImageUrls) ? 
-                Array.AsReadOnly(_imageUrls) : 
-                throw new NotIncludedException<IncludeField>(IncludeField.IncludesImageUrls,nameof(ImageUrls));
+        public IReadOnlyCollection<string> ImageUrls
+        {
+            get => IncludesFields.HasFlag(IncludeField.IncludesImageUrls) ?
+                _imageUrls :
+                throw new NotIncludedException<IncludeField>(IncludeField.IncludesImageUrls, nameof(ImageUrls));
+            internal set => _imageUrls = value;
+        }
         
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}"/>
@@ -159,15 +162,12 @@ namespace Patreon.Api.V2.Resources
         private string _uploadUrl;
         private string _uploadParameters;
         private string _downloadUrl;
-        private string[] _imageUrls;
+        private IReadOnlyCollection<string> _imageUrls;
         private DateTime _createdAt;
         private string _metaData;
 
         /// <summary> Library specific constructor.</summary>
         internal Media() { }
-
-        /// <summary> Sets the image URLs for the media.</summary>
-        internal void SetImageUrls(string[] urls) => _imageUrls = urls;
 
         string IPatreonResource.IdString => Id.ToString();
 

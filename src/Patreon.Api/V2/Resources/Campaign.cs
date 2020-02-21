@@ -1,4 +1,4 @@
-﻿using Patreon.Api.V2.Core.Resources;
+﻿using Patreon.Api.Core.V2.Resources;
 using System;
 using System.Collections.Generic;
 
@@ -283,16 +283,31 @@ namespace Patreon.Api.V2.Resources
 
         #region RELATIONS
         /// <inheritdoc/>
-        public IReadOnlyCollection<Tier> Tiers => _tiers != null ? Array.AsReadOnly(_tiers) : Array.AsReadOnly(Array.Empty<Tier>());
+        /// <exception cref="NotImplementedException"/>
+        public IReadOnlyCollection<Tier> Tiers
+        {
+            get => _tiers ?? throw new NotImplementedException();
+            internal set => _tiers = value;
+        }
 
         /// <inheritdoc/>
         public User Creator { get; internal set; }
 
         /// <inheritdoc/>
-        public IReadOnlyCollection<Benefit> Benefits => _benefits != null ? Array.AsReadOnly(_benefits) : Array.AsReadOnly(Array.Empty<Benefit>());
+        /// <exception cref="NotImplementedException"/>
+        public IReadOnlyCollection<Benefit> Benefits
+        {
+            get => _benefits ?? throw new NotImplementedException();
+            internal set => _benefits = value;
+        }
 
         /// <inheritdoc/>
-        public IReadOnlyCollection<Goal> Goals => _goals != null ? Array.AsReadOnly(_goals) : Array.AsReadOnly(Array.Empty<Goal>());
+        /// <exception cref="NotImplementedException"/>
+        public IReadOnlyCollection<Goal> Goals
+        {
+            get => _goals ?? throw new NotImplementedException();
+            internal set => _goals = value;
+        }
         #endregion
 
         private string _summary;
@@ -323,24 +338,20 @@ namespace Patreon.Api.V2.Resources
         private string _vanity;
         private string _url;
 
-        private Tier[] _tiers;
-        private Benefit[] _benefits;
-        private Goal[] _goals;
+        private IReadOnlyCollection<Tier> _tiers;
+        private IReadOnlyCollection<Benefit> _benefits;
+        private IReadOnlyCollection<Goal> _goals;
 
 
         /// <summary> Library restricted construcor.</summary>
         internal Campaign() { }
-
-        /// <summary> Sets the tiers for this campaign.</summary>
-        internal void SetTiers(Tier[] tiers) => _tiers = tiers;
-
-        /// <summary> Sets the benefits for this campaign.</summary>
-        internal void SetBenefits(Benefit[] benefits) => _benefits = benefits;
-
-        /// <summary> Sets the goals for this campaign.</summary>
-        internal void SetGoals(Goal[] goals) => _goals = goals;
-
+        
         string IPatreonResource.IdString => Id.ToString();
+
+        IUser ICampaign.Creator => Creator; 
+        IReadOnlyCollection<ITier> ICampaign.Tiers => Tiers;
+        IReadOnlyCollection<IBenefit> ICampaign.Benefits => Benefits;
+        IReadOnlyCollection<IGoal> ICampaign.Goals => Goals;
 
         [Flags]
         public enum IncludeField

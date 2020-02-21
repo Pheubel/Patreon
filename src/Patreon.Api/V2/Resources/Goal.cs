@@ -1,4 +1,4 @@
-﻿using Patreon.Api.V2.Core.Resources;
+﻿using Patreon.Api.Core.V2.Resources;
 using System;
 
 namespace Patreon.Api.V2.Resources
@@ -93,6 +93,8 @@ namespace Patreon.Api.V2.Resources
         internal Goal() { }
 
         string IPatreonResource.IdString => Id.ToString();
+
+        ICampaign IGoal.Campaign => Campaign;
 
         [Flags]
         public enum IncludeField

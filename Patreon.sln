@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Patreon.Api", "src\Patreon.Api\Patreon.Api.csproj", "{175BBBE4-AC66-44E3-964B-928528919FC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Patreon.Api", "src\Patreon.Api\Patreon.Api.csproj", "{175BBBE4-AC66-44E3-964B-928528919FC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Patreon.Api.Core", "src\Patreon.Api.Core\Patreon.Api.Core.csproj", "{22BAC0D3-1CBE-4428-9A6B-58E866E62C6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{175BBBE4-AC66-44E3-964B-928528919FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{175BBBE4-AC66-44E3-964B-928528919FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{175BBBE4-AC66-44E3-964B-928528919FC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22BAC0D3-1CBE-4428-9A6B-58E866E62C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22BAC0D3-1CBE-4428-9A6B-58E866E62C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22BAC0D3-1CBE-4428-9A6B-58E866E62C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22BAC0D3-1CBE-4428-9A6B-58E866E62C6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

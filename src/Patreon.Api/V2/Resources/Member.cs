@@ -1,4 +1,4 @@
-﻿using Patreon.Api.V2.Core.Resources;
+﻿using Patreon.Api.Core.V2.Resources;
 using System;
 using System.Collections.Generic;
 
@@ -140,10 +140,11 @@ namespace Patreon.Api.V2.Resources
 
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
-        public IReadOnlyCollection<Tier> EntitledTiers =>
-            _entitledTiers != null ?
-                Array.AsReadOnly(_entitledTiers) :
-                throw new NotIncludedException();
+        public IReadOnlyCollection<Tier> EntitledTiers
+        {
+            get => _entitledTiers ?? throw new NotIncludedException();
+            internal set => _entitledTiers = value;
+        }
 
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
@@ -155,10 +156,11 @@ namespace Patreon.Api.V2.Resources
 
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException"/>
-        public IReadOnlyCollection<PledgeEvent> PledgeHistory =>
-            _pledgeHistory != null ?
-                Array.AsReadOnly(_pledgeHistory) :
-                throw new NotIncludedException();
+        public IReadOnlyCollection<PledgeEvent> PledgeHistory
+        {
+            get => _pledgeHistory ?? throw new NotIncludedException();
+            internal set => _pledgeHistory = value;
+        }
         #endregion
 
         private PatronState _patronStatus;
@@ -175,20 +177,22 @@ namespace Patreon.Api.V2.Resources
 
         private Address _address;
         private Campaign _campaign;
-        private Tier[] _entitledTiers;
+        private IReadOnlyCollection<Tier> _entitledTiers;
         private User _user;
-        private PledgeEvent[] _pledgeHistory;
+        private IReadOnlyCollection<PledgeEvent> _pledgeHistory;
 
         /// <summary> Library restricted constructor.</summary>
         internal Member() { }
 
-        /// <summary> Sets the entitled tiers for the member.</summary>
-        internal void SetEntitledTiers(Tier[] tiers) => _entitledTiers = tiers;
-
-        /// <summary> sets the pledge history for the member.</summary>
-        internal void SetPledgeHistory(PledgeEvent[] pledges) => _pledgeHistory = pledges;
-
         string IPatreonResource.IdString => Id.ToString();
+
+        Enum IMember.PatronStatusValue => PatronStatus;
+        Enum IMember.LastChargeStatusValue => LastChargeStatus;
+        IAddress IMember.Address => Address;
+        ICampaign IMember.Campaign => Campaign;
+        IReadOnlyCollection<ITier> IMember.EntitledTiers => EntitledTiers;
+        IUser IMember.User => User;
+        IReadOnlyCollection<IPledgeEvent> IMember.PledgeHistory => PledgeHistory;
 
         [Flags]
         public enum IncludeField
