@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Resources.Socials
 {
-    public class Google : IAuthorizedApp<Google.Scope>
+    public class TwitterApp : IAuthorizedApp<TwitterApp.Scope>
     {
         public string Id => throw new NotImplementedException();
         public string Url => throw new NotImplementedException();

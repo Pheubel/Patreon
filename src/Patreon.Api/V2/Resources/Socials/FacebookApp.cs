@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Resources.Socials
 {
-    public class Spotify : IAuthorizedApp<Spotify.Scope>
+    public class FacebookApp : IAuthorizedApp<FacebookApp.Scope>
     {
         public string Id => throw new NotImplementedException();
         public string Url => throw new NotImplementedException();

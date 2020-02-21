@@ -5,15 +5,15 @@ namespace Patreon.Api.V2.Resources
 {
     public class SocialConnections : ISocialConnections
     {
-        public DeviantArt DeviantArt { get; internal set; }
-        public Discord Discord { get; internal set; }
-        public Facebook Facebook { get; internal set; }
-        public Google Google { get; internal set; }
-        public Instagram Instagram { get; internal set; }
-        public Spotify Spotify { get; internal set; }
-        public Twitch Twitch { get; internal set; }
-        public Twitter Twitter { get; internal set; }
-        public Youtube Youtube { get; internal set; }
+        public DeviantArtApp DeviantArt { get; internal set; }
+        public DiscordApp Discord { get; internal set; }
+        public FacebookApp Facebook { get; internal set; }
+        public GoogleApp Google { get; internal set; }
+        public InstagramApp Instagram { get; internal set; }
+        public SpotifyApp Spotify { get; internal set; }
+        public TwitchApp Twitch { get; internal set; }
+        public TwitterApp Twitter { get; internal set; }
+        public YoutubeApp Youtube { get; internal set; }
 
         IAuhorizedApp ISocialConnections.DeviantArt => DeviantArt;
         IAuhorizedApp ISocialConnections.Discord => Discord;

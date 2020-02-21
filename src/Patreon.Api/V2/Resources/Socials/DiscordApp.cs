@@ -3,7 +3,7 @@ using System;
 
 namespace Patreon.Api.V2.Resources.Socials
 {
-    public class DeviantArt : IAuthorizedApp<DeviantArt.Scope>
+    public class DiscordApp : IAuthorizedApp<DiscordApp.Scope>
     {
         public string Id => throw new NotImplementedException();
         public string Url => throw new NotImplementedException();
