@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.Core.V2.Resources
 {
+    /// <summary> A container for a user's address information.</summary>
     public interface IAddress : IPatreonResource<int>
     {
         /// <summary> The full recipient name.</summary>

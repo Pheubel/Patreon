@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.Core.V2.Resources
 {
+    /// <summary> A container representing OAuth client data.</summary>
     public interface IOAuthClient : IPatreonResource<int>
     {
         /// <summary> The client's secret.</summary>
@@ -34,6 +35,9 @@ namespace Patreon.Api.Core.V2.Resources
         ITokenResponse CreatorToken { get; }
     }
 
+    /// <inheritdoc/>
+    /// <typeparam name="TAuthToken"> The token type to use to represent the authorization token.</typeparam>
+    /// <typeparam name="TTokenScopes"> The type responsible for managing the token's scope.</typeparam>
     public interface IOAuthClient<TAuthToken, TTokenScopes> : IOAuthClient
         where TAuthToken : ITokenResponse<TTokenScopes>
         where TTokenScopes : struct, Enum

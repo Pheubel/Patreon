@@ -139,7 +139,7 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library restricted construcor.</summary>
         internal Address() { }
 
-        string IPatreonResource.IdString => Id.ToString();
+        string IPatreonResource.Id => Id.ToString();
 
         IUser IAddress.User => User;
         IReadOnlyCollection<ICampaign> IAddress.Campaigns => Campaigns;

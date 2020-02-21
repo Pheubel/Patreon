@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.Core.V2.Resources
 {
+    /// <summary> A container of a user's data.</summary>
     public interface IUser : IPatreonResource<int>
     {
         /// <summary> The user's email address.</summary>
@@ -44,6 +45,5 @@ namespace Patreon.Api.Core.V2.Resources
         IReadOnlyCollection<IMember> Members { get; }
         /// <summary> The user's campaign.</summary>
         ICampaign Campaign { get; }
-       
     }
 }

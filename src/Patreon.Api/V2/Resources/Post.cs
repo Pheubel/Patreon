@@ -145,7 +145,7 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library specific constructor.</summary>
         internal Post() { }
 
-        string IPatreonResource.IdString => Id.ToString();
+        string IPatreonResource.Id => Id.ToString();
 
         IUser IPost.User => User;
         ICampaign IPost.Campaign => Campaign;

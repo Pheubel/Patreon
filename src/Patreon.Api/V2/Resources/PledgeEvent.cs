@@ -40,10 +40,10 @@ namespace Patreon.Api.V2.Resources
 
         internal PledgeEvent() { }
 
-        string IPatreonResource.IdString => Id.ToString();
+        string IPatreonResource.Id => Id.ToString();
 
-        Enum IPledgeEvent.TypeValue => Type;
-        Enum IPledgeEvent.PaymentStatusValue => PaymentStatus;
+        Enum IPledgeEvent.Type => Type;
+        Enum IPledgeEvent.PaymentStatus => PaymentStatus;
         IUser IPledgeEvent.User => User;
         ICampaign IPledgeEvent.Campaign => Campaign;
 

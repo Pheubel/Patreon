@@ -184,10 +184,10 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library restricted constructor.</summary>
         internal Member() { }
 
-        string IPatreonResource.IdString => Id.ToString();
+        string IPatreonResource.Id => Id.ToString();
 
-        Enum IMember.PatronStatusValue => PatronStatus;
-        Enum IMember.LastChargeStatusValue => LastChargeStatus;
+        Enum IMember.PatronStatus => PatronStatus;
+        Enum IMember.LastChargeStatus => LastChargeStatus;
         IAddress IMember.Address => Address;
         ICampaign IMember.Campaign => Campaign;
         IReadOnlyCollection<ITier> IMember.EntitledTiers => EntitledTiers;

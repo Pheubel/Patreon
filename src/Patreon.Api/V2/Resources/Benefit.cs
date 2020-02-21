@@ -209,7 +209,7 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library restricted construcor.</summary>
         internal Benefit() { }
 
-        string IPatreonResource.IdString => Id.ToString();
+        string IPatreonResource.Id => Id.ToString();
 
         IReadOnlyCollection<ITier> IBenefit.Tiers => Tiers;
         IReadOnlyCollection<IDeliverable> IBenefit.Deliverables => Deliverables;

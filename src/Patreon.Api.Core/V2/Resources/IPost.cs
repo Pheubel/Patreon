@@ -2,6 +2,7 @@
 
 namespace Patreon.Api.Core.V2.Resources
 {
+    /// <summary> A container of a compaign's post data.</summary>
     public interface IPost : IPatreonResource<int>
     {
         /// <summary> The title of the post.</summary>

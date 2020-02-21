@@ -156,7 +156,7 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library exclusive contructor.</summary>
         internal OAuthClient() { }
 
-        string IPatreonResource.IdString => Id.ToString();
+        string IPatreonResource.Id => Id.ToString();
 
         IUser IOAuthClient.User => User;
         ICampaign IOAuthClient.Campaign => Campaign;

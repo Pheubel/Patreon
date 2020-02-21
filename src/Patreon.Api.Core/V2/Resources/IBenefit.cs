@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.Core.V2.Resources
 {
+    /// <summary> A container for a campaign's benefit.</summary>
     public interface IBenefit : IPatreonResource<int>
     {
         /// <summary> The display title of the benefit.</summary>

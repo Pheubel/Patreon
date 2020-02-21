@@ -2,10 +2,11 @@
 
 namespace Patreon.Api.Core.V2.Resources
 {
+    /// <summary> A container of  webhoook's data.</summary>
     public interface IWebhook : IPatreonResource<int>
     {
         /// <summary> The events that will trigger the webhook.</summary>
-        Enum TriggersValue { get; }
+        Enum Triggers { get; }
         /// <summary> The fully qualifier URI where the webhook will be sent.</summary>
         Uri Uri { get; }
         /// <summary> Determined if the webhook is paused by repeated failed attempts.</summary>
@@ -23,10 +24,12 @@ namespace Patreon.Api.Core.V2.Resources
         ICampaign Campaign { get; }
     }
 
+    /// <inheritdoc/>
+    /// <typeparam name="TTrigger"> The type to use for managing the triggers the webhook uses.</typeparam>
     public interface IWebhook<TTrigger> : IWebhook
         where TTrigger : struct, Enum
     {
         /// <summary> The events that will trigger the webhook.</summary>
-        TTrigger Triggers { get; }
+        new TTrigger Triggers { get; }
     }
 }

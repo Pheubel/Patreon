@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.Core.V2.Resources
 {
+    /// <summary> A container representing campaign data.</summary>
     public interface ICampaign : IPatreonResource<int>
     {
         /// <summary> The summary of the campaign.</summary>

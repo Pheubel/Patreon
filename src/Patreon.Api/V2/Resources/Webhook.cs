@@ -101,9 +101,9 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library restricted constructor.</summary>
         internal Webhook() { }
 
-        string IPatreonResource.IdString => Id.ToString();
+        string IPatreonResource.Id => Id.ToString();
 
-        Enum IWebhook.TriggersValue => Triggers;
+        Enum IWebhook.Triggers => Triggers;
         IOAuthClient IWebhook.Client => Client;
         ICampaign IWebhook.Campaign => Campaign;
 

@@ -1,12 +1,17 @@
 ﻿namespace Patreon.Api.Core.V2.Resources
 {
+    /// <summary> A resource available from the patreon API.</summary>
     public interface IPatreonResource
     {
-        string IdString { get; }
+        /// <summary> The string representation of the resource identifier.</summary>
+        string Id { get; }
     }
 
+    /// <inheritdoc/>
+    /// <typeparam name="TIdentifier"> The type to reresent the resource identifier.</typeparam>
     public interface IPatreonResource<TIdentifier> : IPatreonResource
     {
-        TIdentifier Id { get; }
+        /// <summary> The resource identifier.</summary>
+        new TIdentifier Id { get; }
     }
 }

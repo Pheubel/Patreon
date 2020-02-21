@@ -92,7 +92,7 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library restricted constructor.</summary>
         internal Goal() { }
 
-        string IPatreonResource.IdString => Id.ToString();
+        string IPatreonResource.Id => Id.ToString();
 
         ICampaign IGoal.Campaign => Campaign;
 

@@ -223,7 +223,7 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library specific constructor.</summary>
         internal Tier() { }
 
-        string IPatreonResource.IdString => Id.ToString();
+        string IPatreonResource.Id => Id.ToString();
 
         ICampaign ITier.Campaign => _campaign;
         IMedia ITier.Media => _tierImage;

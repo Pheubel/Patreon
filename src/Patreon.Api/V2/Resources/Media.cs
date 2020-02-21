@@ -169,7 +169,7 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library specific constructor.</summary>
         internal Media() { }
 
-        string IPatreonResource.IdString => Id.ToString();
+        string IPatreonResource.Id => Id.ToString();
 
         [Flags]
         public enum IncludeField

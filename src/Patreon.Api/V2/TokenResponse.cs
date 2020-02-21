@@ -14,6 +14,6 @@ namespace Patreon.Api.V2
         public ScopeField Scope { get; internal set; }
         public const string TokenType = "Bearer";
 
-        Enum ITokenResponse.Scopevalue => Scope;
+        Enum ITokenResponse.Scope => Scope;
     }
 }

@@ -1,0 +1,621 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Patreon.Api.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Patreon.Api.Core.V2.Builders.ICampaignBuilder`1">
+            <summary> A mechanism to construct a campaign from a GET request.</summary>
+            <typeparam name="TCampaign"> The campaign type the builder will produce.</typeparam>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.ICampaignBuilder`1.BuildRequestContent">
+            <summary> Builds a <see cref="T:System.Net.Http.FormUrlEncodedContent"/> for use in a GET request.</summary>
+            <returns> A <see cref="T:System.Net.Http.FormUrlEncodedContent"/> containing info on what to include in the request.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.ICampaignBuilder`1.BuildCampaignAsync(System.IO.Stream)">
+            <summary> Builds a campaign instance from a stream of campaign data.</summary>
+            <param name="userStream"> The stream containing the campaign data.</param>
+            <returns> Campaign instance from a stream of campaign data.</returns>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Builders.IIdentityBuilder`1">
+            <summary> A mechanism to construct a identity user from a GET request.</summary>
+            <typeparam name="TUser"> The user type the builder will produce.</typeparam>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.IIdentityBuilder`1.BuildRequestContent">
+            <summary> Builds a <see cref="T:System.Net.Http.FormUrlEncodedContent"/> for use in a GET request.</summary>
+            <returns> A <see cref="T:System.Net.Http.FormUrlEncodedContent"/> containing info on what to include in the request.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.IIdentityBuilder`1.BuildIdentityAsync(System.IO.Stream)">
+            <summary> Builds an identity user instance from a stream of campaign data.</summary>
+            <param name="userStream"> The stream containing the campaign data.</param>
+            <returns> identity user instance from a stream of campaign data.</returns>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Api.IIdentityClient`4">
+            <summary> A patreon client which interacts with identity endpoints</summary>
+            <typeparam name="TUser"> The user type the client will retrieve.</typeparam>
+            <typeparam name="TCampaign"> The campaign type th client will retrieve.</typeparam>
+            <typeparam name="TToken"> The token ype to be sent in the request for authorization.</typeparam>
+            <typeparam name="TTokenScope"> The scope type the token uses.</typeparam>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Api.IIdentityClient`4.GetIdentityAsync(`2,Patreon.Api.Core.V2.Builders.IIdentityBuilder{`0})">
+            <summary> Retrieves the identity user from the pareon API.</summary>
+            <param name="token"> The token used for autorization.</param>
+            <param name="builder"> The builder used for forming the identity user.</param>
+            <returns> The identity user.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Api.IIdentityClient`4.GetIdentityCampaignAsync(`2,Patreon.Api.Core.V2.Builders.ICampaignBuilder{`1})">
+            <summary> Retrieves the identity user's campaign from the patreon API.</summary>
+            <param name="token"> The token used for authentication.</param>
+            <param name="builder"> The builder used for forming the campaign.</param>
+            <returns> The identity user's campaign.</returns>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAddress.Addressee">
+            <summary> The full recipient name.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAddress.LineOne">
+            <summary> The first line of the user's street address.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAddress.LineTwo">
+            <summary> The second line of the user's street address.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAddress.PostalCode">
+            <summary> The postal or zip code of the user.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAddress.City">
+            <summary> The city the user resides in.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAddress.State">
+            <summary> The name of the state or province the user resides in.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAddress.Country">
+            <summary> The country the user resides in.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAddress.PhoneNumber">
+            <summary> The non US telephone address.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAddress.CreatedAt">
+            <summary> The moment the address record was created.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAddress.User">
+            <summary> The user the address record belongs to.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAddress.Campaigns">
+            <summary> The campaigns that have access to this record.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.Title">
+            <summary> The display title of the benefit.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.Description">
+            <summary> The display description of the benefit.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.BenefitType">
+            <summary> Type of benefit.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.RuleType">
+            <summary> A rule type designation.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.CreatedAt">
+            <summary> The time the benefit was created.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.DeliveredDeliverablesCount">
+            <summary> The number of deliverables for this benefit that have been marked completed.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.NotDeliveredDeliverablesCount">
+            <summary> The number of deliverables for this benefit that are due for all dates.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.DeliverablesDueTodayCount">
+            <summary> The number of deliverables for this benefit that are due for today.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.NextDeliverableDueDate">
+            <summary> The next due date for this benefit.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.TiersCount">
+            <summary> The number of tiers containing this benefit.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.IsDeleted">
+            <summary> Determines if this benefit has been marked as deleted.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.IsPublished">
+            <summary> Determines if this benefit has been marked as published.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.IsEnded">
+            <summary> Determines if this benefit is no longer available to new patrons.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.AppExternalId">
+            <summary> The third-party external ID this reward is associated with, if any.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.AppMeta">
+            <summary> the metadata the third-party app included with this benefit on creation.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.Tiers">
+            <summary> The tiers the benefit has been added to.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.Deliverables">
+            <summary> The deliverables that have been generated by the benefit.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.Campaign">
+            <summary> The campaign the benefit belongs to.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.Summary">
+            <summary> The summary of the campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.CreationName">
+            <summary> The type of content the creator is creating.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.PayPername">
+            <summary> The thing which patrons are paying per.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.OneLiner">
+            <summary> The one-liner for this campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.MainVideoEmbed">
+            <summary> The embed for the main video of the campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.MainVideoUrl">
+            <summary> The embed for the main video of the campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.ImageUrl">
+            <summary> The banner image URL for the campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.ImageSmallUrl">
+            <summary> The URL fo the campaign's profile image.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.ThanksVideoUrl">
+            <summary> The URL for the thanks video shown after pledging to this campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.ThanksEmbed">
+            <summary> The embed for the thanks video shown after pledging to this campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.ThanksMessage">
+            <summary> The thanks message shown to patrons after pledging to this campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.IsMonthly">
+            <summary> Determines if this campaign charges on a monthly basis.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.HasRss">
+            <summary> Determines whether this user has opted-in to RSS feeds.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.HasSentRssNotification">
+            <summary> Determines wheter or not the creator has sent a one-time RSS notification email.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.RssFeedTitle">
+            <summary> The title of the RSS feed.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.RssArtworkUrl">
+            <summary> The URL for the RSS album artwork.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.IsNsfw">
+            <summary> Determines if the creator has marked this campaign as containing NSFW content.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.IsChargedImmediately">
+            <summary> Determines if the campaign charges upfront.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.CreatedAt">
+            <summary> The date that the creator created the campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.PublishedAt">
+            <summary> The date the creator published the campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.PledgeUrl">
+            <summary> The relative URL for the pledge checkout flow for this campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.PatronCount">
+            <summary> The number of patrons pledging to this creator.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.DiscordServerId">
+            <summary> The ID of the external discord server that is linked to this campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.GoogleAnalyticsId">
+            <summary> The id of the Google Analytics tracker that the creator wants metrics sent to.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.ShowEarnings">
+            <summary> Determines whether the campaing's total earnings are shown publicly.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.Vanity">
+            <summary> The campaign's vanity.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.Url">
+            <summary> A URL to access this campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.Tiers">
+            <summary> The tiers in this campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.Creator">
+            <summary> The owner of the campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.Benefits">
+            <summary> The benefits in this campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.Goals">
+            <summary> The goals set for this campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.CompletedAt">
+            <summary> When the creator marked the diliverable as completed or fulfulled to the patron.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.DeliveryStatusValue">
+            <summary> The current status of the deliverable.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.DueAt">
+            <summary> When the deliverable is due to the patron.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.Campaign">
+            <summary> The campaign the deliverable belongs to.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.Benefit">
+            <summary> The benefit the deliverable belongs to.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.Member">
+            <summary> The member who has been granted the deliverable.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.User">
+            <summary> The user who has been granted the deliverable.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable`1.DeliveryStatus">
+            <summary> The current status of the deliverable.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IGoal.AmountCents">
+            <summary> The goal amount in USD cents.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IGoal.Title">
+            <summary> The title of the goal.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IGoal.Description">
+            <summary> The goal description.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IGoal.CreatedAt">
+            <summary> When the goal was created for the campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IGoal.ReachedAt">
+            <summary> When the campaign reached the goal.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IGoal.CompletedPercentage">
+            <summary> The whole-number representation of the pledge sum compared to the pledge goal.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IGoal.Campaign">
+            <summary> The campaign the goal is set for.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.FileName">
+            <summary> the name of the file.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.SizeBytes">
+            <summary> The size of the file in bytes.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.MimeType">
+            <summary> The mimetype of te uploaded file.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.State">
+            <summary> The state of the file.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.OwnerType">
+            <summary> The type of resource that owns the file.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.OwnerId">
+            <summary> The id of the owner resource.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.OwnerRelationship">
+            <summary> The relationship type for multi-relationship media.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.UploadExpiresAt">
+            <summary> When the upload URL expires.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.UploadUrl">
+            <summary> The URL to perform a POST request to in order to upload the media file.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.UploadParameters">
+            <summary> All the parameters that have to be added to the upload form request.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.DownloadUrl">
+            <summary> The URL to download this media.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.ImageUrls">
+            <summary> The resized image URL's for this media.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.CreatedAt">
+            <summary> When the file was created.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMedia.MetaData">
+            <summary> The metadate related to the file.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.PatronStatusValue">
+            <summary> The status of the patron.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.IsFollower">
+            <summary> Determines if the user has subscribed to updates about public posts.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.FullName">
+            <summary> The full name of the member.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.Email">
+            <summary> The email address of the member.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.PledgeRelationshipStart">
+            <summary> When the member started to pledge to the campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.LifetimeSupportCents">
+            <summary> The total amount that the member has ever paid to the campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.CurrentlyEntitledAmountCents">
+            <summary> The amount in cents that the member is entitled to.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.LastChargeDate">
+            <summary> When the last attempted charge was.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.LastChargeStatusValue">
+            <summary> The result of the last attempted charge.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.Note">
+            <summary> The creator's not on the member.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.WillPayAmountCents">
+            <summary> The amount in cents hte user will pay at the next pay cycle.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.Address">
+            <summary> The member's shipping address that they entered fo rthe campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.Campaign">
+            <summary> The campaign that the membership is for.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.EntitledTiers">
+            <summary> The tiers that the member is entitled to.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.User">
+            <summary> The use who is pledging to the campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.PledgeHistory">
+            <summary> The pledge history of the member.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember`2.PatronStatus">
+            <summary> The status of the patron.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember`2.LastChargeStatus">
+            <summary> The result of the last attempted charge.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.ClientSecret">
+            <summary> The client's secret.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.Name">
+            <summary> The name provided during client setup.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.Description">
+            <summary> The description provided during client setup.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.AuthorName">
+            <summary> The author name provided during client setup.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.Domain">
+            <summary> The domain provided during client setup.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.Version">
+            <summary> The patreon API version the client is using.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.IconUrl">
+            <summary> The URL of the icon used in the OAuth authorization flow.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.PrivacyPolicyUrl">
+            <summary> The URL of the privacy policy provided during client setup.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.TosUrl">
+            <summary> The uRl of the terms of service provided during client setup.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.RedirectUris">
+            <summary> The allowable redirect URIs for the OAuth authorization flow.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.User">
+            <summary> The user who created the OAuth client.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.Campaign">
+            <summary> The campaign of the user who created the OAuth client/</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.CreatorToken">
+            <summary> The token of the user who created the client.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient`2.CreatorToken">
+            <summary> The token of the user who created the client.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.CurrencyCode">
+            <summary> The ISO code of the currency.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.AmountCents">
+            <summary> The amount of cents pledged.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.TierId">
+            <summary> The tier id associated with the pledge.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.TierTitle">
+            <summary> The tier title assoiated with the pledge.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.PaymentStatusValue">
+            <summary> The status of the pledge's payment.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.Date">
+            <summary> The date on which the pledge occured.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.TypeValue">
+            <summary> The type of the event.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.User">
+            <summary> The pledging user</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.Campaign">
+            <summary> The capaign being pledged to.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent`2.PaymentStatus">
+            <summary> The status of the pledge's payment.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent`2.Type">
+            <summary> The type of the event.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPost.Title">
+            <summary> The title of the post.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPost.Content">
+            <summary> The content of the post.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPost.IsPaid">
+            <summary> Determines if the post incurs a bill as part of a pay-per-pos campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPost.IsPublic">
+            <summary> Determines if the post is viewable by non-patrons.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPost.PublishedAt">
+            <summary> When the post was pubished by the creator.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPost.EmbedData">
+            <summary> The embed data if the media is embedded in the post.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPost.EmbedUrl">
+            <summary> The embedded media URL.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPost.AppId">
+            <summary> The platform app ID.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPost.AppStatus">
+            <summary> The status of the app.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPost.User">
+            <summary> The author of the post.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPost.Campaign">
+            <summary> The campaign that the post belongs to</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.AmountCents">
+            <summary> Monetary amount associeted with this tier.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.UserLimit">
+            <summary> The maximum number of patrons this tier is limited to, if applicable.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.Remaining">
+            <summary> The remaining number of patrons who may subscribe to this tier if thre is a user limit.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.Description">
+            <summary> The tier diplay description.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.RequiresShipping">
+            <summary> Determines if te tier requires a shipping address from patrons.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.CreatedAt">
+            <summary> When thist tier was created.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.Url">
+            <summary> The fully quaified URL associated with this tier.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.PatronCount">
+            <summary> The number of patrons currently registered for this tier.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.PostCount">
+            <summary> The number of posts published to this tier.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.DiscordRoleIds">
+            <summary> The discord role ID's granted by this tier.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.Title">
+            <summary> The tier display title.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.ImageUrl">
+            <summary> The full qualified image URL associated with this tier.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.EditedAt">
+            <summary> When the tier was last modified.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.Published">
+            <summary> Determines if the tier is currently published.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.PublishedAt">
+            <summary> When the tier was published.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.UnpublishedAt">
+            <summary> When the tier was published.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.Campaign">
+            <summary> The campaign the tier belongs to.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.Media">
+            <summary> The image file associated with the tier.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ITier.Benefits">
+            <summary> The benefits attached to the tier.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.Email">
+            <summary> The user's email address.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.FirstName">
+            <summary> The user's first name.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.LastName">
+            <summary> The user's last name.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.FullName">
+            <summary> The user's full name.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.Vanity">
+            <summary> The public username of the user.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.About">
+            <summary> The user's about text displayed on their profile.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.Url">
+            <summary> The URL of the user's creator or patron profile.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.IsEmailVerified">
+            <summary> Determines if the user has confirmed their email.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.CanSeeNsfw">
+            <summary> Determines if this user can see NSFW content.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.HidesPledges">
+            <summary> Determines if this users hides their pledges.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.CreatedAt">
+            <summary> When the user's account was created.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.AvatarUrl">
+            <summary> The URL of the user's profile picture.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.AvatarThumbnailUrl">
+            <summary> The urL of the user's profile picture thumbnail.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.LikeCount">
+            <summary> The number of posts this user has liked.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.SocialConnections">
+            <summary> The mapping of the user's connected apps.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.Members">
+            <summary> The memberships of the user.</summary>
+            <remarks> 
+            Requires "identity.memberships" scope to get all campaigns the identity user
+            is a member of.
+            </remarks>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IUser.Campaign">
+            <summary> The user's campaign.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.TriggersValue">
+            <summary> The events that will trigger the webhook.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.Uri">
+            <summary> The fully qualifier URI where the webhook will be sent.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.Paused">
+            <summary> Determined if the webhook is paused by repeated failed attempts.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.LastAttemptedAt">
+            <summary> When the last attempt of triggering the webhook occured.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.NumConsecutiveTimesFailed">
+            <summary> The number of time sthe webhook has failed onecutively.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.Secret">
+            <summary> The secret used to sign the webhook mesage body for verifying authenticity.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.Client">
+            <summary> The oauth client which created the webhook.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.Campaign">
+            <summary> The campaign whose events trigger the webhook.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IWebhook`1.Triggers">
+            <summary> The events that will trigger the webhook.</summary>
+        </member>
+    </members>
+</doc>

@@ -2,6 +2,7 @@
 
 namespace Patreon.Api.Core.V2.Resources
 {
+    /// <summary> A container for a campaign's goal data.</summary>
     public interface IGoal : IPatreonResource<int>
     {
         /// <summary> The goal amount in USD cents.</summary>

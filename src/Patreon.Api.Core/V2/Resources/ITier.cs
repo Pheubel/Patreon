@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Patreon.Api.Core.V2.Resources
 {
+    /// <summary> A container of a campaign's tier data.</summary>
     public interface ITier : IPatreonResource<int>
     {
         /// <summary> Monetary amount associeted with this tier.</summary>
@@ -44,6 +45,5 @@ namespace Patreon.Api.Core.V2.Resources
         IMedia Media { get; }
         /// <summary> The benefits attached to the tier.</summary>
         IReadOnlyCollection<IBenefit> Benefits { get; }
-       
     }
 }

@@ -86,9 +86,9 @@ namespace Patreon.Api.V2.Resources
         /// <summary> Library restricted construcor.</summary>
         internal Deliverable() { }
 
-        string IPatreonResource.IdString => Id.ToString();
+        string IPatreonResource.Id => Id.ToString();
 
-        Enum IDeliverable.DeliveryStatusValue => DeliveryStatus;
+        Enum IDeliverable.DeliveryStatus => DeliveryStatus;
         ICampaign IDeliverable.Campaign => Campaign;
         IBenefit IDeliverable.Benefit => Benefit;
         IMember IDeliverable.Member => Member;
