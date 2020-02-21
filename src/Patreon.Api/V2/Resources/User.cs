@@ -194,6 +194,7 @@ namespace Patreon.Api.V2.Resources
 
         IReadOnlyCollection<IMember> IUser.Members => Members;
         ICampaign IUser.Campaign => Campaign;
+        ISocialConnections IUser.SocialConnections => SocialConnections;
 
         [Flags]
         public enum IncludeFlag

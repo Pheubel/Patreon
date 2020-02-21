@@ -34,7 +34,7 @@ namespace Patreon.Api.Core.V2.Resources
         /// <summary> The number of posts this user has liked.</summary>
         int LikeCount { get; }
         /// <summary> The mapping of the user's connected apps.</summary>
-        SocialConnections SocialConnections { get; }
+        ISocialConnections SocialConnections { get; }
 
         /// <summary> The memberships of the user.</summary>
         /// <remarks> 
