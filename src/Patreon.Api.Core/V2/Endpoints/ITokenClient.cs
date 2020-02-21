@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Patreon.Api.Core.V2
+namespace Patreon.Api.Core.V2.Endponts
 {
     /// <summary> A patreon client that interacts with the authorization endpoints.</summary>
     /// <typeparam name="TToken"> The token type to use for authorization.</typeparam>

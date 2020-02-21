@@ -3,7 +3,7 @@ using Patreon.Api.Core.V2.Resources;
 using System;
 using System.Threading.Tasks;
 
-namespace Patreon.Api.Core.V2.Api
+namespace Patreon.Api.Core.V2.Endponts
 {
     /// <summary> A patreon client which interacts with identity endpoints</summary>
     /// <typeparam name="TUser"> The user type the client will retrieve.</typeparam>
