@@ -1,5 +1,5 @@
 ﻿using Patreon.Api.Core.V2.Builders;
-using Patreon.Api.V2.Resources;
+using Patreon.Api.Core.V2.Endponts;
 using Patreon.Api.V2.Resources;
 using System;
 using System.Collections.Generic;
@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Patreon.Api.V2
 {
     public abstract class PatreonClient :
-        ITokenClient<TokenResponse, ScopeField>,
-        IIdentityClient<User, Campaign, TokenResponse, ScopeField>
+        ITokenClient<TokenResponse>,
+        IIdentityClient<User, Campaign, TokenResponse>
     {
         protected HttpClient HttpClient { get; }
 
