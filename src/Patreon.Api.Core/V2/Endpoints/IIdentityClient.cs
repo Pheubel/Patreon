@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 
 namespace Patreon.Api.Core.V2.Endponts
 {
-    /// <summary> A patreon client which interacts with identity endpoints</summary>
+    /// <summary> A patreon client which interacts with identity endpoints.</summary>
     /// <typeparam name="TUser"> The user type the client will retrieve.</typeparam>
     /// <typeparam name="TCampaign"> The campaign type th client will retrieve.</typeparam>
-    /// <typeparam name="TToken"> The token ype to be sent in the request for authorization.</typeparam>
+    /// <typeparam name="TToken"> The token type to be sent in the request for authorization.</typeparam>
     public interface IIdentityClient<TUser, TCampaign, TToken>
         where TUser : IUser
         where TCampaign : ICampaign

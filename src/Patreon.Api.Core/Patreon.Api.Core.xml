@@ -30,24 +30,192 @@
             <param name="userStream"> The stream containing the campaign data.</param>
             <returns> identity user instance from a stream of campaign data.</returns>
         </member>
-        <member name="T:Patreon.Api.Core.V2.Api.IIdentityClient`4">
-            <summary> A patreon client which interacts with identity endpoints</summary>
+        <member name="T:Patreon.Api.Core.V2.Builders.IMemberCollectionBuilder`1">
+            <summary> A mechanism to construct a member collection from an API get request.</summary>
+            <typeparam name="TMember"> The member type the builder will produce.</typeparam>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.IMemberCollectionBuilder`1.BuildRequestContent">
+            <summary> Builds a <see cref="T:System.Net.Http.FormUrlEncodedContent"/> for use in a GET request.</summary>
+            <returns> A <see cref="T:System.Net.Http.FormUrlEncodedContent"/> containing info on what to include in the request.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.IMemberCollectionBuilder`1.BuildMemberCollectionAsync(System.IO.Stream)">
+            <summary> Builds a member collection from a stream of campaign data.</summary>
+            <param name="memberCollectionStream"> The stream containing the member collection data.</param>
+            <returns> Member collection from a stream of campaign data.</returns>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Builders.IPostBuilder`1">
+            <summary> A mechanism to construct a post from a GET request.</summary>
+            <typeparam name="TPost"> The post type the builder will produce.</typeparam>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.IPostBuilder`1.BuildRequestContent">
+            <summary> Builds a <see cref="T:System.Net.Http.FormUrlEncodedContent"/> for use in a GET request.</summary>
+            <returns> A <see cref="T:System.Net.Http.FormUrlEncodedContent"/> containing info on what to include in the request.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.IPostBuilder`1.BuildPostAsync(System.IO.Stream)">
+            <summary> Builds a post instance from a stream of post data.</summary>
+            <param name="postStream"> The stream containing the post data.</param>
+            <returns> Post instance from a stream of post data.</returns>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Builders.IPostCollectionBuilder`1">
+            <summary> A mechanism to construct a post collection from an API get request.</summary>
+            <typeparam name="TPost"> The post type the builder will produce.</typeparam>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.IPostCollectionBuilder`1.BuildRequestContent">
+            <summary> Builds a <see cref="T:System.Net.Http.FormUrlEncodedContent"/> for use in a GET request.</summary>
+            <returns> A <see cref="T:System.Net.Http.FormUrlEncodedContent"/> containing info on what to include in the request.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.IPostCollectionBuilder`1.BuildPostCollectionAsync(System.IO.Stream)">
+            <summary> Builds a post collection from a stream of campaign data.</summary>
+            <param name="postCollectionStream"> The stream containing the post collection data.</param>
+            <returns> Post collection from a stream of campaign data.</returns>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Builders.IWebhookCollectionBuilder`1">
+            <summary> A mechanism to construct a webhook collection from an API get request.</summary>
+            <typeparam name="TWebhook"> The webhook type the builder will produce.</typeparam>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.IWebhookCollectionBuilder`1.BuildRequestContent">
+            <summary> Builds a <see cref="T:System.Net.Http.FormUrlEncodedContent"/> for use in a GET request.</summary>
+            <returns> A <see cref="T:System.Net.Http.FormUrlEncodedContent"/> containing info on what to include in the request.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Builders.IWebhookCollectionBuilder`1.BuildWebhookCollectionAsync(System.IO.Stream)">
+            <summary> Builds a webhook collection from a stream of campaign data.</summary>
+            <param name="webhookCollectionStream"> The stream containing the webhook collection data.</param>
+            <returns> Webhook collection from a stream of campaign data.</returns>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Endpoints.ICampaignClient`4">
+            <summary> A patreon client which interacts with campaign endpoints.</summary>
+            <typeparam name="TCampaign"> The campaign type the client will retrieve.</typeparam>
+            <typeparam name="TMember"> The member type the client will retrieve.</typeparam>
+            <typeparam name="TPost"> The post type the client will retrieve.</typeparam>
+            <typeparam name="TToken"> The token type to be sent in the request for authorization.</typeparam>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Endpoints.ICampaignClient`4.GetCampaignAsync(`3,System.Int32,Patreon.Api.Core.V2.Builders.ICampaignBuilder{`0})">
+            <summary> Retrieves a campaign from the patreon API.</summary>
+            <param name="token"></param>
+            <param name="campaignId"> The campaign to retrieve.</param>
+            <param name="builder"> The builder used for forming the campaign.</param>
+            <returns> A campaign from the patreon API.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Endpoints.ICampaignClient`4.GetCampaignMembersAsync(`3,System.Int32,Patreon.Api.Core.V2.Builders.IMemberCollectionBuilder{`1})">
+            <summary> Retrieves a collection of members of a campaign from the patreon API.</summary>
+            <param name="token"></param>
+            <param name="campaignId"> The campaign to retrieve members from.</param>
+            <param name="builder"> The builder used for forming the campaign members.</param>
+            <returns> A collection of members of a campaign.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Endpoints.ICampaignClient`4.GetCampaignPostsAsync(`3,System.Int32,Patreon.Api.Core.V2.Builders.IPostCollectionBuilder{`2})">
+            <summary> Retrieves a collection of posts of a campaign from the patreon API.</summary>
+            <param name="token"> The token used for authentication.</param>
+            <param name="campaignId"> The campaign to retrieve members from.</param>
+            <param name="builder"> The builder used for forming the campaign posts.</param>
+            <returns> A collection of posts of a campaign.</returns>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Endpoints.IPostClient`2">
+            <summary> A patreon client which interacts with post endpoints.</summary>
+            <typeparam name="TPost"> The post type the client will retrieve.</typeparam>
+            <typeparam name="TToken"> The token type to be sent in the request for authorization.</typeparam>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Endpoints.IPostClient`2.GetPostAsync(`1,System.Int32,Patreon.Api.Core.V2.Builders.IPostBuilder{`0})">
+            <summary> Retrieves a post from the patreon API.</summary>
+            <param name="token"> The token used for autorization.</param>
+            <param name="postId"> The post to retrieve.</param>
+            <param name="builder"> The builder used for forming the identity user.</param>
+            <returns> A post.</returns>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Endpoints.IWebhookClient`2">
+            <summary> A patreon client which interacts with webhook endpoints.</summary>
+            <typeparam name="TWebhook"> The webhook type the client will retrieve.</typeparam>
+            <typeparam name="TToken"> The token type to be sent in the request for authorization.</typeparam>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Endpoints.IWebhookClient`2.GetWebhooks(`1,Patreon.Api.Core.V2.Builders.IWebhookCollectionBuilder{`0})">
+            <summary> Retrieves a collection of webhooks from the patreon API.</summary>
+            <param name="token"> The token used for autorization.</param>
+            <param name="builder"> The builder used for forming the webhook collection.</param>
+            <returns> Colletion of webhooks.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Endpoints.IWebhookClient`2.PostWebhook``1(`1,``0)">
+            <summary> Adds webhook through the patreon API.</summary>
+            <typeparam name="TWebhookData"> The webhook data type</typeparam>
+            <param name="token"> The token used for autorization.</param>
+            <param name="webhook"> The webhook data to add.</param>
+            <returns> Newly created webhook.</returns>        
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Endpoints.IWebhookClient`2.PatchWebhook``1(`1,``0)">
+            <summary> Changes the webhook through the patreon API.</summary>
+            <typeparam name="TWebhookData"> The webhook data type</typeparam>
+            <param name="token"> The token used for autorization.</param>
+            <param name="webhook"> The webhook data to patch with.</param>
+            <returns> Patched webhook.</returns>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Endponts.IIdentityClient`3">
+            <summary> A patreon client which interacts with identity endpoints.</summary>
             <typeparam name="TUser"> The user type the client will retrieve.</typeparam>
             <typeparam name="TCampaign"> The campaign type th client will retrieve.</typeparam>
-            <typeparam name="TToken"> The token ype to be sent in the request for authorization.</typeparam>
-            <typeparam name="TTokenScope"> The scope type the token uses.</typeparam>
+            <typeparam name="TToken"> The token type to be sent in the request for authorization.</typeparam>
         </member>
-        <member name="M:Patreon.Api.Core.V2.Api.IIdentityClient`4.GetIdentityAsync(`2,Patreon.Api.Core.V2.Builders.IIdentityBuilder{`0})">
+        <member name="M:Patreon.Api.Core.V2.Endponts.IIdentityClient`3.GetIdentityAsync(`2,Patreon.Api.Core.V2.Builders.IIdentityBuilder{`0})">
             <summary> Retrieves the identity user from the pareon API.</summary>
             <param name="token"> The token used for autorization.</param>
             <param name="builder"> The builder used for forming the identity user.</param>
             <returns> The identity user.</returns>
         </member>
-        <member name="M:Patreon.Api.Core.V2.Api.IIdentityClient`4.GetIdentityCampaignAsync(`2,Patreon.Api.Core.V2.Builders.ICampaignBuilder{`1})">
+        <member name="M:Patreon.Api.Core.V2.Endponts.IIdentityClient`3.GetIdentityCampaignAsync(`2,Patreon.Api.Core.V2.Builders.ICampaignBuilder{`1})">
             <summary> Retrieves the identity user's campaign from the patreon API.</summary>
             <param name="token"> The token used for authentication.</param>
             <param name="builder"> The builder used for forming the campaign.</param>
             <returns> The identity user's campaign.</returns>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Endponts.ITokenClient`1">
+            <summary> A patreon client that interacts with the authorization endpoints.</summary>
+            <typeparam name="TToken"> The token type to use for authorization.</typeparam>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Endponts.ITokenClient`1.ValidateTokenAsync(System.String,System.String,System.String,System.String)">
+            <summary> Sends a validation request to retrieve an authorization token from the patreon API.</summary>
+            <param name="code"> The validation code to verify the token request.</param>
+            <param name="clientId"> The API client id.</param>
+            <param name="clientSecret"> The API client secret used for verifying the client's identity.</param>
+            <param name="redirectUri"> The URI to redirect the client to.</param>
+            <returns> A token used for autorization.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Endponts.ITokenClient`1.ValidateTokenAsync(System.String,System.String,System.String,System.Uri)">
+            <summary> Sends a validation request to retrieve an authorization token from the patreon API.</summary>
+            <param name="code"> The validation code to verify the token request.</param>
+            <param name="clientId"> The API client id.</param>
+            <param name="clientSecret"> The API client secret for verifying the client's identity.</param>
+            <param name="redirectUri"> The URI to redirect the client to.</param>
+            <returns> A token used for autorization.</returns>
+        </member>
+        <member name="M:Patreon.Api.Core.V2.Endponts.ITokenClient`1.RefreshTokenAsync(System.String,System.String,System.String)">
+            <summary> Sends a refresh token request to the patreon authorization API.</summary>
+            <param name="refreshToken"> The refresh token used to authenticate the refresh request.</param>
+            <param name="clientId"> The API client id.</param>
+            <param name="clientSecret"> The API client secret used for verifying the client's identity.</param>
+            <returns> A token used for autorization.</returns>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.ITokenResponse">
+            <summary> A container for an API token's data used for authentication.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.ITokenResponse.AccessToken">
+            <summary> The access token used to authenticate a request.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.ITokenResponse.RefreshToken">
+            <summary> The refresh token used to authenticate a refresh request.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.ITokenResponse.ExpiresAt">
+            <summary> The expiration date of the token.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.ITokenResponse.Scope">
+            <summary> The scopes the token grants access to.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.ITokenResponse`1">
+            <inheritdoc/>
+            <typeparam name="TScope"> The type to manage the token's scope type.</typeparam>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.ITokenResponse`1.Scope">
+            <summary> The scopes the token grants access to.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IAddress">
+            <summary> A container for a user's address information.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IAddress.Addressee">
             <summary> The full recipient name.</summary>
@@ -81,6 +249,28 @@
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IAddress.Campaigns">
             <summary> The campaigns that have access to this record.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IAuhorizedApp">
+            <summary> Resembles an application that can give authorization to patreon through scopes.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAuhorizedApp.Id">
+            <summary> The string representation of the identifier of the application user.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAuhorizedApp.Scopes">
+            <summary> The scopes that the app has granted to patreon.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAuhorizedApp.Url">
+            <summary> The URL leading to the application granting autorization to patreon.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IAuthorizedApp`1">
+            <inheritdoc/>
+            <typeparam name="TScope"> The scope type to use to maintain app scopes.</typeparam>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IAuthorizedApp`1.Scopes">
+            <summary> The scopes that the app has granted to patreon.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IBenefit">
+            <summary> A container for a campaign's benefit.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.Title">
             <summary> The display title of the benefit.</summary>
@@ -135,6 +325,9 @@
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IBenefit.Campaign">
             <summary> The campaign the benefit belongs to.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.ICampaign">
+            <summary> A container representing campaign data.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.Summary">
             <summary> The summary of the campaign.</summary>
@@ -229,10 +422,13 @@
         <member name="P:Patreon.Api.Core.V2.Resources.ICampaign.Goals">
             <summary> The goals set for this campaign.</summary>
         </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IDeliverable">
+            <summary> A container representing data of a campaign's deliverable.</summary>
+        </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.CompletedAt">
             <summary> When the creator marked the diliverable as completed or fulfulled to the patron.</summary>
         </member>
-        <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.DeliveryStatusValue">
+        <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.DeliveryStatus">
             <summary> The current status of the deliverable.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.DueAt">
@@ -250,8 +446,15 @@
         <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable.User">
             <summary> The user who has been granted the deliverable.</summary>
         </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IDeliverable`1">
+            <inheritdoc/>
+            <typeparam name="TStatus"> The type to use for managing the delivery status.</typeparam>
+        </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IDeliverable`1.DeliveryStatus">
             <summary> The current status of the deliverable.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IGoal">
+            <summary> A container for a campaign's goal data.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IGoal.AmountCents">
             <summary> The goal amount in USD cents.</summary>
@@ -273,6 +476,9 @@
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IGoal.Campaign">
             <summary> The campaign the goal is set for.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IMedia">
+            <summary> a container for media data.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IMedia.FileName">
             <summary> the name of the file.</summary>
@@ -316,7 +522,10 @@
         <member name="P:Patreon.Api.Core.V2.Resources.IMedia.MetaData">
             <summary> The metadate related to the file.</summary>
         </member>
-        <member name="P:Patreon.Api.Core.V2.Resources.IMember.PatronStatusValue">
+        <member name="T:Patreon.Api.Core.V2.Resources.IMember">
+            <summary> A container representing a campaign member data.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.PatronStatus">
             <summary> The status of the patron.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IMember.IsFollower">
@@ -340,7 +549,7 @@
         <member name="P:Patreon.Api.Core.V2.Resources.IMember.LastChargeDate">
             <summary> When the last attempted charge was.</summary>
         </member>
-        <member name="P:Patreon.Api.Core.V2.Resources.IMember.LastChargeStatusValue">
+        <member name="P:Patreon.Api.Core.V2.Resources.IMember.LastChargeStatus">
             <summary> The result of the last attempted charge.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IMember.Note">
@@ -364,11 +573,19 @@
         <member name="P:Patreon.Api.Core.V2.Resources.IMember.PledgeHistory">
             <summary> The pledge history of the member.</summary>
         </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IMember`2">
+            <inheritdoc/>
+            <typeparam name="TPatronState"> The type to use for managing the patron's state.</typeparam>
+            <typeparam name="TChargeState"> The type to use for managing the charge state.</typeparam>
+        </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IMember`2.PatronStatus">
             <summary> The status of the patron.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IMember`2.LastChargeStatus">
             <summary> The result of the last attempted charge.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IOAuthClient">
+            <summary> A container representing OAuth client data.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.ClientSecret">
             <summary> The client's secret.</summary>
@@ -409,8 +626,29 @@
         <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient.CreatorToken">
             <summary> The token of the user who created the client.</summary>
         </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IOAuthClient`2">
+            <inheritdoc/>
+            <typeparam name="TAuthToken"> The token type to use to represent the authorization token.</typeparam>
+            <typeparam name="TTokenScopes"> The type responsible for managing the token's scope.</typeparam>
+        </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IOAuthClient`2.CreatorToken">
             <summary> The token of the user who created the client.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IPatreonResource">
+            <summary> A resource available from the patreon API.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPatreonResource.Id">
+            <summary> The string representation of the resource identifier.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IPatreonResource`1">
+            <inheritdoc/>
+            <typeparam name="TIdentifier"> The type to reresent the resource identifier.</typeparam>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IPatreonResource`1.Id">
+            <summary> The resource identifier.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IPledgeEvent">
+            <summary> A container of a pledge event's data.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.CurrencyCode">
             <summary> The ISO code of the currency.</summary>
@@ -424,13 +662,13 @@
         <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.TierTitle">
             <summary> The tier title assoiated with the pledge.</summary>
         </member>
-        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.PaymentStatusValue">
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.PaymentStatus">
             <summary> The status of the pledge's payment.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.Date">
             <summary> The date on which the pledge occured.</summary>
         </member>
-        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.TypeValue">
+        <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.Type">
             <summary> The type of the event.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.User">
@@ -439,11 +677,19 @@
         <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent.Campaign">
             <summary> The capaign being pledged to.</summary>
         </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IPledgeEvent`2">
+            <inheritdoc/>
+            <typeparam name="TEventType"> The type to manage the event's type.</typeparam>
+            <typeparam name="TPaymentState"> The type to manage the payment' state.</typeparam>
+        </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent`2.PaymentStatus">
             <summary> The status of the pledge's payment.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IPledgeEvent`2.Type">
             <summary> The type of the event.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IPost">
+            <summary> A container of a compaign's post data.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IPost.Title">
             <summary> The title of the post.</summary>
@@ -477,6 +723,39 @@
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IPost.Campaign">
             <summary> The campaign that the post belongs to</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.ISocialConnections">
+            <summary> A representation of the applications that can be authorized on the patreon app.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ISocialConnections.DeviantArt">
+            <summary> The application authorization data of DeviantArt.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ISocialConnections.Discord">
+            <summary> The application authorization data of Discord.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ISocialConnections.Facebook">
+            <summary> The application authorization data of Facebook.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ISocialConnections.Google">
+            <summary> The application authorization data of Google.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ISocialConnections.Instagram">
+            <summary> The application authorization data of Instagram.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ISocialConnections.Spotify">
+            <summary> The application authorization data of Spotify.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ISocialConnections.Twitch">
+            <summary> The application authorization data of Twitch.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ISocialConnections.Twitter">
+            <summary> The application authorization data of Twitter.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.ISocialConnections.Youtube">
+            <summary> The application authorization data of Youtube.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.ITier">
+            <summary> A container of a campaign's tier data.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.ITier.AmountCents">
             <summary> Monetary amount associeted with this tier.</summary>
@@ -535,6 +814,9 @@
         <member name="P:Patreon.Api.Core.V2.Resources.ITier.Benefits">
             <summary> The benefits attached to the tier.</summary>
         </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IUser">
+            <summary> A container of a user's data.</summary>
+        </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IUser.Email">
             <summary> The user's email address.</summary>
         </member>
@@ -590,7 +872,10 @@
         <member name="P:Patreon.Api.Core.V2.Resources.IUser.Campaign">
             <summary> The user's campaign.</summary>
         </member>
-        <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.TriggersValue">
+        <member name="T:Patreon.Api.Core.V2.Resources.IWebhook">
+            <summary> A container of  webhoook's data.</summary>
+        </member>
+        <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.Triggers">
             <summary> The events that will trigger the webhook.</summary>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.Uri">
@@ -613,6 +898,10 @@
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IWebhook.Campaign">
             <summary> The campaign whose events trigger the webhook.</summary>
+        </member>
+        <member name="T:Patreon.Api.Core.V2.Resources.IWebhook`1">
+            <inheritdoc/>
+            <typeparam name="TTrigger"> The type to use for managing the triggers the webhook uses.</typeparam>
         </member>
         <member name="P:Patreon.Api.Core.V2.Resources.IWebhook`1.Triggers">
             <summary> The events that will trigger the webhook.</summary>
