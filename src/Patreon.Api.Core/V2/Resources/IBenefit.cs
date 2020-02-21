@@ -11,7 +11,7 @@ namespace Patreon.Api.Core.V2.Resources
         /// <summary> The display description of the benefit.</summary>
         string Description { get; }
         /// <summary> Type of benefit.</summary>
-        string BenefitType {get;}
+        string BenefitType { get; }
         /// <summary> A rule type designation.</summary>
         string RuleType { get; }
         /// <summary> The time the benefit was created.</summary>

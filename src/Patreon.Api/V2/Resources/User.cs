@@ -1,8 +1,6 @@
-﻿using Patreon.Api.Converters;
-using Patreon.Api.Core.V2.Resources;
+﻿using Patreon.Api.Core.V2.Resources;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace Patreon.Api.V2.Resources
 {

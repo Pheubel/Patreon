@@ -165,7 +165,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException"/>
         public IReadOnlyCollection<Tier> Tiers
         {
-            get => _tiers ?? throw new NotIncludedException(); 
+            get => _tiers ?? throw new NotIncludedException();
             internal set => _tiers = value;
         }
 

@@ -18,7 +18,7 @@ namespace Patreon.Api.Core.V2
     /// <inheritdoc/>
     /// <typeparam name="TScope"> The type to manage the token's scope type.</typeparam>
     public interface ITokenResponse<TScope> : ITokenResponse
-        where TScope: struct, Enum
+        where TScope : struct, Enum
     {
         /// <summary> The scopes the token grants access to.</summary>
         new TScope Scope { get; }

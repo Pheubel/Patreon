@@ -12,22 +12,22 @@ namespace Patreon.Api.V2.Resources
         public string CurrencyCode { get; internal set; }
 
         /// <inheritdoc/>
-        public int AmountCents {get; internal set;}
+        public int AmountCents { get; internal set; }
 
         /// <inheritdoc/>
-        public string TierId {get; internal set;}
+        public string TierId { get; internal set; }
 
         /// <inheritdoc/>
-        public string TierTitle {get; internal set;}
+        public string TierTitle { get; internal set; }
 
         /// <inheritdoc/>
-        public PaymentState PaymentStatus {get; internal set;}
+        public PaymentState PaymentStatus { get; internal set; }
 
         /// <inheritdoc/>
-        public DateTime Date {get; internal set;}
+        public DateTime Date { get; internal set; }
 
         /// <inheritdoc/>
-        public PledgeType Type {get; internal set;}
+        public PledgeType Type { get; internal set; }
         #endregion
 
         #region RELATIONS

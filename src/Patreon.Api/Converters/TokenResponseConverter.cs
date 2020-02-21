@@ -35,7 +35,7 @@ namespace Patreon.Api.Converters
                     else if (propertyName.SequenceEqual(EXPIRES_IN))
                         tokenResponse.ExpiresAt = DateTime.UtcNow.AddSeconds(reader.GetInt32());
                     else if (propertyName.SequenceEqual(SCOPE))
-                        tokenResponse.Scope = ScopeUtility.ParseScopeString( reader.GetString());
+                        tokenResponse.Scope = ScopeUtility.ParseScopeString(reader.GetString());
                 }
                 else if (reader.TokenType == JsonTokenType.EndObject)
                 {

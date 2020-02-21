@@ -1,7 +1,7 @@
-﻿using System;
-using System.Text;
-using Patreon.Api.V2.Builders;
+﻿using Patreon.Api.V2.Builders;
 using Patreon.Api.V2.Resources;
+using System;
+using System.Text;
 
 namespace Patreon.Api.V2
 {

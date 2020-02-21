@@ -1,6 +1,5 @@
 ﻿using Patreon.Api.Core.V2.Builders;
 using Patreon.Api.Core.V2.Resources;
-using System;
 using System.Threading.Tasks;
 
 namespace Patreon.Api.Core.V2.Endponts
@@ -9,12 +8,10 @@ namespace Patreon.Api.Core.V2.Endponts
     /// <typeparam name="TUser"> The user type the client will retrieve.</typeparam>
     /// <typeparam name="TCampaign"> The campaign type th client will retrieve.</typeparam>
     /// <typeparam name="TToken"> The token ype to be sent in the request for authorization.</typeparam>
-    /// <typeparam name="TTokenScope"> The scope type the token uses.</typeparam>
-    public interface IIdentityClient<TUser, TCampaign, TToken,TTokenScope>
+    public interface IIdentityClient<TUser, TCampaign, TToken>
         where TUser : IUser
         where TCampaign : ICampaign
-        where TToken : ITokenResponse<TTokenScope>
-        where TTokenScope : struct, Enum
+        where TToken : ITokenResponse
     {
         /// <summary> Retrieves the identity user from the pareon API.</summary>
         /// <param name="token"> The token used for autorization.</param>

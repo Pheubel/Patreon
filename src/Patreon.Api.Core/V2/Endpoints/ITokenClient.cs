@@ -5,10 +5,8 @@ namespace Patreon.Api.Core.V2.Endponts
 {
     /// <summary> A patreon client that interacts with the authorization endpoints.</summary>
     /// <typeparam name="TToken"> The token type to use for authorization.</typeparam>
-    /// <typeparam name="TScope"> The type to manage the token's scope typing</typeparam>
-    public interface ITokenClient<TToken,TScope>
-        where TToken : ITokenResponse<TScope>
-        where TScope : struct, Enum
+    public interface ITokenClient<TToken>
+        where TToken : ITokenResponse
     {
         /// <summary> Sends a validation request to retrieve an authorization token from the patreon API.</summary>
         /// <param name="code"> The validation code to verify the token request.</param>

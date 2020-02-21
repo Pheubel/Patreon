@@ -14,9 +14,9 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public string FileName
         {
-            get =>IncludesFields.HasFlag(IncludeField.IncludesFileName)?
+            get => IncludesFields.HasFlag(IncludeField.IncludesFileName) ?
                 _fileName :
-                throw new NotIncludedException<IncludeField>(IncludeField.IncludesFileName,nameof(FileName));
+                throw new NotIncludedException<IncludeField>(IncludeField.IncludesFileName, nameof(FileName));
             internal set => _fileName = value;
         }
 
@@ -24,9 +24,9 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public int SizeBytes
         {
-            get =>IncludesFields.HasFlag(IncludeField.IncludesSizeBytes)?
+            get => IncludesFields.HasFlag(IncludeField.IncludesSizeBytes) ?
                 _sizeBytes :
-                throw new NotIncludedException<IncludeField>(IncludeField.IncludesSizeBytes,nameof(SizeBytes));
+                throw new NotIncludedException<IncludeField>(IncludeField.IncludesSizeBytes, nameof(SizeBytes));
             internal set => _sizeBytes = value;
         }
 
@@ -34,9 +34,9 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public string MimeType
         {
-            get =>IncludesFields.HasFlag(IncludeField.IncludesMimeType)?
+            get => IncludesFields.HasFlag(IncludeField.IncludesMimeType) ?
                 _mimeType :
-                throw new NotIncludedException<IncludeField>(IncludeField.IncludesMimeType ,nameof(MimeType));
+                throw new NotIncludedException<IncludeField>(IncludeField.IncludesMimeType, nameof(MimeType));
             internal set => _mimeType = value;
         }
 
@@ -44,9 +44,9 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public string State
         {
-            get => IncludesFields.HasFlag(IncludeField.IncludesState)?
+            get => IncludesFields.HasFlag(IncludeField.IncludesState) ?
                 _state :
-                throw new NotIncludedException<IncludeField>(IncludeField.IncludesState,nameof(State));
+                throw new NotIncludedException<IncludeField>(IncludeField.IncludesState, nameof(State));
             internal set => _state = value;
         }
 
@@ -54,9 +54,9 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public string OwnerType
         {
-            get =>IncludesFields.HasFlag(IncludeField.IncludesOwnerType)?
+            get => IncludesFields.HasFlag(IncludeField.IncludesOwnerType) ?
                 _ownerType :
-                throw new NotIncludedException<IncludeField>(IncludeField.IncludesOwnerType ,nameof(OwnerType));
+                throw new NotIncludedException<IncludeField>(IncludeField.IncludesOwnerType, nameof(OwnerType));
             internal set => _ownerType = value;
         }
 
@@ -64,7 +64,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public string OwnerId
         {
-            get =>IncludesFields.HasFlag(IncludeField.IncludesOwnerId) ?
+            get => IncludesFields.HasFlag(IncludeField.IncludesOwnerId) ?
                 _ownerId :
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesOwnerId, nameof(OwnerId));
             internal set => _ownerId = value;
@@ -84,7 +84,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime UploadExpiresAt
         {
-            get =>IncludesFields.HasFlag(IncludeField.IncludesUploadExpiresAt) ?
+            get => IncludesFields.HasFlag(IncludeField.IncludesUploadExpiresAt) ?
                 _uploadExpiresAt :
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesUploadExpiresAt, nameof(UploadExpiresAt));
             internal set => _uploadExpiresAt = value;
@@ -94,7 +94,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public string UploadUrl
         {
-            get =>IncludesFields.HasFlag(IncludeField.IncludesUploadUrl) ?
+            get => IncludesFields.HasFlag(IncludeField.IncludesUploadUrl) ?
                 _uploadUrl :
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesUploadUrl, nameof(UploadUrl));
             internal set => _uploadUrl = value;
@@ -104,7 +104,7 @@ namespace Patreon.Api.V2.Resources
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public string UploadParameters
         {
-            get =>IncludesFields.HasFlag(IncludeField.IncludesUploadParameters) ?
+            get => IncludesFields.HasFlag(IncludeField.IncludesUploadParameters) ?
                 _uploadParameters :
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesUploadParameters, nameof(UploadParameters));
             internal set => _uploadParameters = value;
@@ -129,7 +129,7 @@ namespace Patreon.Api.V2.Resources
                 throw new NotIncludedException<IncludeField>(IncludeField.IncludesImageUrls, nameof(ImageUrls));
             internal set => _imageUrls = value;
         }
-        
+
         /// <inheritdoc/>
         /// <exception cref="NotIncludedException{IncludeField}"/>
         public DateTime CreatedAt

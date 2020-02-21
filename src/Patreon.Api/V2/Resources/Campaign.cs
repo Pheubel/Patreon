@@ -345,10 +345,10 @@ namespace Patreon.Api.V2.Resources
 
         /// <summary> Library restricted construcor.</summary>
         internal Campaign() { }
-        
+
         string IPatreonResource.Id => Id.ToString();
 
-        IUser ICampaign.Creator => Creator; 
+        IUser ICampaign.Creator => Creator;
         IReadOnlyCollection<ITier> ICampaign.Tiers => Tiers;
         IReadOnlyCollection<IBenefit> ICampaign.Benefits => Benefits;
         IReadOnlyCollection<IGoal> ICampaign.Goals => Goals;

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Patreon.Api.Core.V2.Resources;
+using System;
 using System.Collections.Generic;
-using Patreon.Api.Core.V2.Resources;
 
 namespace Patreon.Api.V2.Resources
 {

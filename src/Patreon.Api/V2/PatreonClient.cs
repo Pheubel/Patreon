@@ -1,12 +1,11 @@
-﻿using Patreon.Api.Core.V2;
-using Patreon.Api.Core.V2.Builders;
-using Patreon.Api.Core.V2.Endponts;
+﻿using Patreon.Api.Core.V2.Builders;
+using Patreon.Api.V2.Resources;
+using Patreon.Api.V2.Resources;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Patreon.Api.V2.Resources;
 
 namespace Patreon.Api.V2
 {
@@ -22,10 +21,10 @@ namespace Patreon.Api.V2
             HttpClient = httpClient;
         }
 
-        public async Task<TokenResponse> ValidateTokenAsync(string code, string clientId, string clientSecret, string redirectUrl) => 
+        public async Task<TokenResponse> ValidateTokenAsync(string code, string clientId, string clientSecret, string redirectUrl) =>
             await ValidateTokenAsync(code, clientId, clientSecret, new Uri(redirectUrl));
 
-        public async  Task<TokenResponse> ValidateTokenAsync(string code, string clientId, string clientSecret, Uri redirectUri)
+        public async Task<TokenResponse> ValidateTokenAsync(string code, string clientId, string clientSecret, Uri redirectUri)
         {
             var parameters = new KeyValuePair<string, string>[] {
                 new KeyValuePair<string, string>("grant_type","authorization_code"),
@@ -181,6 +180,6 @@ namespace Patreon.Api.V2
             return campaign;
         }
 
-        
+
     }
 }

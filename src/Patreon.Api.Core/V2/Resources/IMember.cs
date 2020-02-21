@@ -44,7 +44,7 @@ namespace Patreon.Api.Core.V2.Resources
     /// <inheritdoc/>
     /// <typeparam name="TPatronState"> The type to use for managing the patron's state.</typeparam>
     /// <typeparam name="TChargeState"> The type to use for managing the charge state.</typeparam>
-    public interface IMember<TPatronState,TChargeState> : IMember
+    public interface IMember<TPatronState, TChargeState> : IMember
         where TPatronState : struct, Enum
         where TChargeState : struct, Enum
     {
